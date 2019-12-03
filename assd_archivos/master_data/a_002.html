@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html><head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+		<meta charset="UTF-8">
+		<title>Login iframe</title>
+		<script type="text/javascript" src="a_data_002/postmessage.js"></script>
+		<script>
+		// <![CDATA[
+			var cookieCheck;
+
+			function pollCookie() {
+				if ( getServiceData() ) {
+
+					var event = {
+						'event':  'login',
+						'success': true
+					}
+
+					pm( {
+						target: window.parent,
+						type: 'loginMessage',
+						data: event,
+						origin: '*'					
+					} );
+
+					clearInterval( cookieCheck );
+				}
+			}
+
+			function getServiceData() {
+				var data = readCookie( 'wpc_wpc' );
+	
+				if ( null === data || 'undefined' === typeof data.access_token || !data.access_token ) {
+					return false;
+				}
+				return data;
+			}
+
+			/* Read the contents of a named cookie, assuming they are query-string-style
+			delimited, and return them as a JS hash. */
+			function readCookie(c) {
+				var nameEQ = c + "=",
+		    		cookieStrings = document.cookie.split( ';' ),
+		    		i, cookieString, num, chunk, pairs, pair, cookie_data;
+				for ( i = 0; i < cookieStrings.length; i++ ) {
+					cookieString = cookieStrings[ i ];
+					while ( cookieString.charAt( 0 ) === ' ' ) {
+						cookieString = cookieString.substring( 1, cookieString.length );
+					}
+					if ( cookieString.indexOf( nameEQ ) === 0 ) {
+						chunk = cookieString.substring( nameEQ.length, cookieString.length );
+						pairs = chunk.split( '&' );
+						cookie_data = {};
+						for ( num = pairs.length - 1; num >= 0; num-- ) {
+							pair = pairs[ num ].split( '=' );
+							cookie_data[ pair[0] ] = decodeURIComponent( pair[1] );
+						}
+						return cookie_data;
+					}
+				}
+				return null;
+			}
+
+			cookieCheck = setInterval( "pollCookie()", 100 );
+
+		// ]]>
+		</script>
+	</head>
+	<body>
+
+</body></html>

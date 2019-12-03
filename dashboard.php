@@ -203,7 +203,7 @@
                             </a>
                             <ul aria-expanded="false" class="collapse first-level in">
                                 <li class="sidebar-item">
-                                    <a href="mundanos.php" class="sidebar-link">
+                                    <a href="paises.php" class="sidebar-link">
                                         <i class="fa fa-flag"></i>
                                         <span class="hide-menu"> Paises </span>
                                     </a>
@@ -215,7 +215,7 @@
                                     </a>
                                 </li>
                                 <li class="sidebar-item">
-                                    <a href="index3.html" class="sidebar-link">
+                                    <a href="publicaciones.php" class="sidebar-link">
                                         <i class="fa fa-file"></i>
                                         <span class="hide-menu"> Publicaciones </span>
                                     </a>
@@ -305,8 +305,8 @@
                                     
                                     echo   '</td>
                                         <td>
-                                            <a href="delete_user.php?id='.$row['id'].'"> <button type="button" class="btn btn-outline-info btn-circle btn-lg btn-circle ml-2"><i class="fa fa-trash"></i> </button> </a>
-                                            <a href="update_user.php?id='.$row['id'].'"> <button type="button" class="btn btn-outline-info btn-circle btn-lg btn-circle ml-2"><i class="fa fa-pencil"></i> </button> </a>
+                                            <a href="CRUDusers/D_user_mysql.php?id='.$row['id'].'"> <button type="button" class="btn btn-outline-info btn-circle btn-lg btn-circle ml-2"><i class="fa fa-trash"></i> </button> </a>
+                                            <a href="CRUDusers/update_user.php?id='.$row['id'].'"> <button type="button" class="btn btn-outline-info btn-circle btn-lg btn-circle ml-2"><i class="fa fa-pencil"></i> </button> </a>
                                         </td>
                                     </tr>';
                                  } ?>
@@ -321,7 +321,7 @@
                 
                             </div>
                         </div>
-                        <a href="add_user.php"><button class="btn btn-danger text-white float-right ml-3 d-none d-md-block">Nuevo usuario</button></a>
+                        <a href="CRUDusers/add_user.php"><button class="btn btn-danger text-white float-right ml-3 d-none d-md-block">Nuevo usuario</button></a>
                     </div>
                 </div>
             </div>  

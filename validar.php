@@ -13,7 +13,7 @@ $result = mysqli_num_rows($query);
 		$row = mysqli_fetch_array($query);
 			$type = $row['type'];
 			session_start();
-			$_SESSION['user'] = $user;
+			$_SESSION['user'] = $row['id'];
 			
 
 			if ($type == 'admin') {

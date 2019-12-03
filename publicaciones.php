@@ -1,7 +1,8 @@
 <!DOCTYPE html>
-<html dir="ltr" lang="en"><head>
-<meta http-equiv="content-type" content="text/html; charset=UTF-8">
-    <meta charset="utf-8">
+<html lang="sv">
+<head>
+<meta http-equiv="content-type" content="text/html; charset=latin1_swedish_ci">
+    <meta charset="latin1_swedish_ci">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <!-- Tell the browser to be responsive to screen width -->
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -114,8 +115,9 @@
 <body data-theme="dark">
     <?php
         include("conexion.php");
-        include("seguridad.php");
-        $query = mysqli_query($con, "SELECT * FROM user ");
+        // include("seguridad.php");
+        $id_user=1;//$_SESSION['user'];
+        $query = mysqli_query($con, "SELECT * FROM posts WHERE `id_user`='$id_user'");
     ?>
     <!-- ============================================================== -->
     <!-- Preloader - style you can find in spinners.css -->
@@ -165,34 +167,19 @@
                     <!-- ============================================================== -->
                     <a class="topbartoggler d-block d-md-none waves-effect waves-light" href="javascript:void(0)" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><i class="ti-more"></i></a>
                 </div>
-                <!-- ============================================================== -->
-                <!-- End Logo -->
-                <!-- ============================================================== -->
                 <div class="navbar-collapse collapse" id="navbarSupportedContent" data-navbarbg="skin6">
-                    <!-- ============================================================== -->
-                    <!-- toggle and nav items -->
-                    <!-- ============================================================== -->
                     <ul class="navbar-nav float-left mr-auto">
-                        <li class="nav-item d-none d-md-block"><a class="nav-link sidebartoggler waves-effect waves-light" href="javascript:void(0)" data-sidebartype="mini-sidebar"><i class="fa fa-bars"></i></a></li>
-                       
-                        
+                        <li class="nav-item d-none d-md-block">
+                            <a class="nav-link sidebartoggler waves-effect waves-light" href="javascript:void(0)" data-sidebartype="mini-sidebar">
+                                <i class="fa fa-bars"></i>
+                            </a>
+                        </li>
                     </ul>
-                    <!-- ============================================================== -->
-                    <!-- Right side toggle and nav items -->
-                    <!-- ============================================================== -->
                 </div>
             </nav>
         </header>
-        <!-- ============================================================== -->
-        <!-- End Topbar header -->
-        <!-- ============================================================== -->
-        <!-- ============================================================== -->
-        <!-- Left Sidebar - style you can find in sidebar.scss  -->
-        <!-- ============================================================== -->
         <aside class="left-sidebar" data-sidebarbg="skin5">
-            <!-- Sidebar scroll-->
             <div class="scroll-sidebar ps-container ps-theme-default ps-active-y" data-ps-id="93307cc5-70b0-7de7-8c7f-51ecda3ac404">
-                <!-- Sidebar navigation-->
                 <nav class="sidebar-nav">
                     <ul id="sidebarnav" class="in">
                         <li class="sidebar-item selected">
@@ -203,125 +190,123 @@
                             </a>
                             <ul aria-expanded="false" class="collapse first-level in">
                                 <li class="sidebar-item">
-                                    <a href="mundanos.php" class="sidebar-link">
+                                    <a href="paises.php" class="sidebar-link">
                                         <i class="fa fa-flag"></i>
                                         <span class="hide-menu"> Paises </span>
                                     </a>
                                 </li>
-                                <li class="sidebar-item active">
-                                    <a href="dashboard.php" class="sidebar-link active">
+                                <li class="sidebar-item">
+                                    <a href="dashboard.php" class="sidebar-link ">
                                         <i class="fa fa-users"></i>
                                         <span class="hide-menu"> Users </span>
                                     </a>
                                 </li>
-                                <li class="sidebar-item">
-                                    <a href="index3.html" class="sidebar-link">
+                                <li class="sidebar-item active">
+                                    <a href="publicaciones.php" class="sidebar-link active">
                                         <i class="fa fa-file"></i>
                                         <span class="hide-menu"> Publicaciones </span>
                                     </a>
                                 </li>
                             </ul>
                         </li>
-                        
-                    </ul>  
-                  
-                </nav>  
-                <!-- End Sidebar navigation -->
-            <div class="ps-scrollbar-x-rail" style="left: 0px; bottom: 0px;"><div class="ps-scrollbar-x" tabindex="0" style="left: 0px; width: 0px;"></div></div><div class="ps-scrollbar-y-rail" style="top: 0px; height: 0px; right: 3px;"><div class="ps-scrollbar-y" tabindex="0" style="top: 0px; height: 0px;"></div></div></div>
-            <!-- End Sidebar scroll-->
+                    </ul>
+                </nav>
+                <div class="ps-scrollbar-x-rail" style="left: 0px; bottom: 0px;">
+                    <div class="ps-scrollbar-x" tabindex="0" style="left: 0px; width: 0px;">
+                    </div>
+                </div>
+                <div class="ps-scrollbar-y-rail" style="top: 0px; height: 0px; right: 3px;">
+                    <div class="ps-scrollbar-y" tabindex="0" style="top: 0px; height: 0px;">
+                    </div>
+                </div>
+            </div>
         </aside>
-        <!-- ============================================================== -->
-        <!-- End Left Sidebar - style you can find in sidebar.scss  -->
-        <!-- ============================================================== -->
-        <!-- ============================================================== -->
-        <!-- Page wrapper  -->
-        <!-- ============================================================== -->
         <div class="page-wrapper" style="display: block;">
-            <!-- ============================================================== -->
-            <!-- Bread crumb and right sidebar toggle -->
-            <!-- ============================================================== -->
-            
-            <!-- ============================================================== -->
-            <!-- End Bread crumb and right sidebar toggle -->
-            <!-- ============================================================== -->
-            <!-- ============================================================== -->
-            <!-- Container fluid  -->
-            <!-- ============================================================== -->
             <div class="page-content container-fluid">
-                <!-- ============================================================== -->
-                <!-- First Cards Row  -->
-                <!-- ============================================================== -->
-                
-                <!-- ============================================================== -->
-                <!-- Table Row  -->
-                <!-- ============================================================== -->
                 <div class="row">
                     <div class="col-md-12">
                         <div class="card">
                             <div class="card-body">
-                                <h5 class="card-title text-uppercase mb-0">Manage Users</h5>
+                                <h5 class="card-title text-uppercase mb-0">Publicaciones</h5>
                             </div>
                             <div class="table-responsive">
                                 <table class="table no-wrap user-table mb-0">
-                                  <thead>
-                                    <tr>
-                                      <th scope="col" class="border-0 text-uppercase font-medium pl-4">#</th>
-                                      <th scope="col" class="border-0 text-uppercase font-medium">Usuario</th>
-                                      <th scope="col" class="border-0 text-uppercase font-medium">Email</th>
-                                      <th scope="col" class="border-0 text-uppercase font-medium">Tipo</th>
-                                      <th scope="col" class="border-0 text-uppercase font-medium">Activo</th>
-                                      <th scope="col" class="border-0 text-uppercase font-medium">Opciones</th>
-                                    </tr>
-                                  </thead>
-                                  <tbody>
-                                    
-                                    <?php
-                                    
-                                    while( $row=mysqli_fetch_array($query)){
-                                    
-                                    echo '<tr>
-                                            <td class="pl-4">'.$row['id'].'</td>
-                                        <td>
-                                            <h5 class="font-medium mb-0">'. $row['user'].'</h5>
-                                        </td>
-                                        <td>
-                                            <span class="text-muted">'. $row['email'].'</span>
-                                        </td>
-                                        <td>
-                                            <span class="text-muted">'.$row['type'].'</span>
-                                        </td>
-                                        <td>';
-                                    if ($row['tf_active']==1) {
-                                        echo       '<label class="switch">
-                                                <input type="checkbox" checked disabled>
-                                                <span class="slider round"></span>
-                                            </label>';
-                                    }else{
-                                        echo       '<label class="switch">
-                                                <input type="checkbox" disabled>
-                                                <span class="slider round"></span>
-                                            </label>';
-                                    }
-                                    
-                                    echo   '</td>
-                                        <td>
-                                            <a href="delete_user.php?id='.$row['id'].'"> <button type="button" class="btn btn-outline-info btn-circle btn-lg btn-circle ml-2"><i class="fa fa-trash"></i> </button> </a>
-                                            <a href="update_user.php?id='.$row['id'].'"> <button type="button" class="btn btn-outline-info btn-circle btn-lg btn-circle ml-2"><i class="fa fa-pencil"></i> </button> </a>
-                                        </td>
-                                    </tr>';
-                                 } ?>
-                                </tbody>
-                            </table>
-                                
-                    
-                   
-                       
-                        
-                    
-                
+                                    <thead>
+                                        <tr>
+                                            <th scope="col" class="border-0 text-uppercase font-medium pl-4">#</th>
+                                            <th scope="col" class="border-0 text-uppercase font-medium">Titulo</th>
+                                            <th scope="col" class="border-0 text-uppercase font-medium">Usuario</th>
+                                            <th scope="col" class="border-0 text-uppercase font-medium">Pais</th>
+                                            <th scope="col" class="border-0 text-uppercase font-medium">Fecha</th>
+                                            <th scope="col" class="border-0 text-uppercase font-medium">Activo</th>
+                                            <th scope="col" class="border-0 text-uppercase font-medium">Opciones</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <?php
+                                            //fetch nombre del usuario por id
+                                            $query_usuarios=mysqli_query($con,"SELECT user FROM user");
+                                            while( $row=mysqli_fetch_array($query_usuarios)){
+                                                $A_user[]=$row['user'];
+                                            }
+                                            //fetch nombre del pais por id
+                                            $query_paises=mysqli_query($con,"SELECT name FROM country");
+                                            while( $row=mysqli_fetch_array($query_paises)){
+                                                $A_country[]=$row['name'];
+                                            }
+                                            while( $A_row=mysqli_fetch_array($query)){
+                                                //debug array nombre paises "$A_country"    
+                                                $country=$A_row['id_country']-1;
+                                                //debug array nombre paises "$A_user"    
+                                                $user=$A_row['id_user']-1;
+                                                //Tabla posteos
+                                                echo    '<tr>
+                                                            <td class="pl-4">'.$A_row['id'].'</td>
+                                                        <td>
+                                                            <h5 class="font-medium mb-0">'. $A_row['title'].'</h5>
+                                                        </td>
+                                                        <td>
+                                                            <span class="text-muted">'. $A_user[$user].'</span>
+                                                        </td>
+                                                        <td>
+                                                            <span class="text-muted">'.$A_country[$country].'</span>
+                                                        </td>
+                                                        <td>
+                                                            <span class="text-muted">'.$A_row['updated_at'].'</span>
+                                                        </td>
+                                                        <td>';
+                                                            if ($A_row['tf_active']==1) {
+                                                                echo    '<label class="switch">
+                                                                            <input type="checkbox" checked disabled>
+                                                                            <span class="slider round"></span>
+                                                                        </label>';
+                                                            }else{
+                                                                echo    '<label class="switch">
+                                                                            <input type="checkbox" disabled>
+                                                                            <span class="slider round"></span>
+                                                                        </label>';
+                                                            }
+                                                        echo    '</td>
+                                                                <td>
+                                                                    <a href="CRUDposts/D_post_mysql.php?id='.$A_row['id'].'">
+                                                                        <button type="button" class="btn btn-outline-info btn-circle btn-lg btn-circle ml-2">
+                                                                            <i class="fa fa-trash"></i>
+                                                                        </button>
+                                                                    </a>
+                                                                    <a href="CRUDposts/update_post.php?id='.$A_row['id'].'">
+                                                                        <button type="button" class="btn btn-outline-info btn-circle btn-lg btn-circle ml-2">
+                                                                            <i class="fa fa-pencil"></i>
+                                                                        </button>
+                                                                    </a>
+                                                                </td>
+                                                        </tr>';
+                                            } 
+                                        ?>
+                                    </tbody>
+                                </table>
                             </div>
                         </div>
-                        <a href="add_user.php"><button class="btn btn-danger text-white float-right ml-3 d-none d-md-block">Nueva publicacion</button></a>
+                        <a href="CRUDposts/add_post.php"><button class="btn btn-danger text-white float-right ml-3 d-none d-md-block">Nueva publicacion</button></a>
                     </div>
                 </div>
             </div>  
