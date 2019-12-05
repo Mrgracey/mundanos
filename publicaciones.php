@@ -19,6 +19,7 @@
     <link href="Ample%20admin%20Template%20-%20The%20Ultimate%20Multipurpose%20admin%20template_archivos/jquery-jvectormap-2.css" rel="stylesheet">
     <!-- needed css -->
     <link href="Ample%20admin%20Template%20-%20The%20Ultimate%20Multipurpose%20admin%20template_archivos/style.css" rel="stylesheet">
+    <script src="js/sorttable.js"></script>
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -230,7 +231,7 @@
                                 <h5 class="card-title text-uppercase mb-0">Publicaciones</h5>
                             </div>
                             <div class="table-responsive">
-                                <table class="table no-wrap user-table mb-0">
+                                <table class="table no-wrap user-table mb-0 sortable">
                                     <thead>
                                         <tr>
                                             <th scope="col" class="border-0 text-uppercase font-medium pl-4">#</th>

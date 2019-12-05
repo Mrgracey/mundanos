@@ -270,13 +270,13 @@
                                     </a>
                                 </li>
                                 <li class="sidebar-item ">
-                                    <a href="dashboard.php" class="sidebar-link ">
+                                    <a href="../dashboard.php" class="sidebar-link ">
                                         <i class="fa fa-users"></i>
                                         <span class="hide-menu"> Users </span>
                                     </a>
                                 </li>
                                 <li class="sidebar-item active">
-                                    <a href="publicaciones.php" class="sidebar-link active">
+                                    <a href="../publicaciones.php" class="sidebar-link active">
                                         <i class="fa fa-file"></i>
                                         <span class="hide-menu"> Publicaciones </span>
                                     </a>
@@ -311,7 +311,7 @@
                                                     <div class="card-body">
                                                         
                                                         <?php
-                                                            $query_paises=mysqli_query($con,"SELECT id, name FROM country");
+                                                            $query_paises=mysqli_query($con,"SELECT id, name FROM country WHERE tf_active=1");
                                                             while( $row=mysqli_fetch_array($query_paises)){
                                                                 $A_country[]=$row['name'];
                                                                 $A_country_id[]=$row['id'];

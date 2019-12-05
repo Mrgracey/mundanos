@@ -356,20 +356,26 @@
                                                                                 <button type="submit" class="inline btn btn-danger text-white float-right ml-3 d-none d-md-block">Guardar cambios  </button>
                                                                                 
                                                                             </form>';
+                                                                            $fileName= basename ($_FILES ['fileToUpload']['name']);
+                                                                            $fileDest	= "../uploads/img_".$id.".jpg";
+                                                                            move_uploaded_file ($_FILES ['fileToUpload']['tmp_name'], $fileDest);
                                                                 }
                                                             }else{
-                                                                echo    ' <div class="loader"></div><form name="tfinactivo" id="tfinactivo" action="U_country_mysql.php" method="get"><input type="hidden" name="id" value="'.$id.'"></form>';
+                                                                echo    ' <div class="loader"></div><form name="tfinactivo" id="tfinactivo" action="U_country_mysql.php" method="get"><input type="hidden" name="id" value="'.$id.'"><input type="submit" value="Submit" hidden/></form>';
                                                                 ?>
-                                                                <script>
-                                                                    var auto_refresh = setInterval(
-                                                                        function()
-                                                                        {
-                                                                            submitform();
-                                                                        });
-                                                                        function submitform()
-                                                                        {
-                                                                            document.tfinactivo.submit();
+                                                                <script type="text/javascript">
+                                                                    window.onload=function(){
+                                                                        var auto = setTimeout(function(){ autoRefresh(); }, 10);
+
+                                                                        function submitform(){
+                                                                        document.forms["tfinactivo"].submit();
                                                                         }
+
+                                                                        function autoRefresh(){
+                                                                        clearTimeout(auto);
+                                                                        auto = setTimeout(function(){ submitform(); autoRefresh(); }, 100);
+                                                                        }
+                                                                    }
                                                                 </script>
                                                                 <?php
                                                             }
