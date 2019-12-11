@@ -1,46 +1,61 @@
 <?php
-$connect = mysqli_connect("localhost", "root", "", "testing");
+include("../conexion.php");
 $output = '';
 if(isset($_POST["query"]))
 {
-	$search = mysqli_real_escape_string($connect, $_POST["query"]);
+	$search = mysqli_real_escape_string($con, $_POST["query"]);
 	$query = "
-	SELECT * FROM tbl_customer 
-	WHERE CustomerName LIKE '%".$search."%'
-	OR Address LIKE '%".$search."%' 
-	OR City LIKE '%".$search."%' 
-	OR PostalCode LIKE '%".$search."%' 
-	OR Country LIKE '%".$search."%'
-	";
+	SELECT * FROM country
+	WHERE name LIKE '%".$search."%'";
 }
-else
-{
-	$query = "
-	SELECT * FROM tbl_customer ORDER BY CustomerID";
-}
-$result = mysqli_query($connect, $query);
+
+$result = mysqli_query($con, $query);
 if(mysqli_num_rows($result) > 0)
 {
-	$output .= '<div class="table-responsive">
-					<table class="table table bordered">
+	$output .= '<table class="table no-wrap user-table mb-0 sortable">
+					<thead>
 						<tr>
-							<th>Customer Name</th>
-							<th>Address</th>
-							<th>City</th>
-							<th>Postal Code</th>
-							<th>Country</th>
-						</tr>';
-	while($row = mysqli_fetch_array($result))
+							<th scope="col" class="border-0 text-uppercase font-medium pl-4">#</th>
+							<th scope="col" class="border-0 text-uppercase font-medium">Codigo</th>
+							<th scope="col" class="border-0 text-uppercase font-medium">Nombre</th>
+							<th scope="col" class="border-0 text-uppercase font-medium">Portada</th>
+							<th scope="col" class="border-0 text-uppercase font-medium">Activo</th>
+							<th scope="col" class="border-0 text-uppercase font-medium">Opciones</th>
+						</tr>
+					</thead>';
+	while($A_row = mysqli_fetch_array($result))
 	{
-		$output .= '
-			<tr>
-				<td>'.$row["CustomerName"].'</td>
-				<td>'.$row["Address"].'</td>
-				<td>'.$row["City"].'</td>
-				<td>'.$row["PostalCode"].'</td>
-				<td>'.$row["Country"].'</td>
-			</tr>
-		';
+		$output .= '<tr>
+						<td class="pl-4">'.utf8_encode($A_row['id']).'</td>
+						<td>
+							<h5 class="font-medium mb-0">'. $A_row['iso'].'</h5>
+						</td>
+						<td>
+							<span class="text-muted">'.utf8_encode($A_row['name']).'</span>
+						</td>
+						<form action="CRUDcountries/update_country.php?id='.$A_row['id'].'" method="post" enctype="multipart/form-data">
+						<td>';
+						if (isset($A_url[$A_row['id']])) {
+							echo '<input type="file" placeholder="'.$A_url[$A_row['id']].'" name="fileToUpload" id="fileToUpload">';
+						}else{
+							echo '<input type="file" placeholder="No hay archive" name="fileToUpload" id="fileToUpload">';
+						}
+						echo '</td>
+						<td>
+						<label class="switch">';        
+							if ($A_row['tf_active']==1) {
+								echo   '<input type="checkbox" name="tf_active" value="1" checked>';
+							}else{
+								echo   '<input type="checkbox" name="tf_active" value="1" >';
+							}
+							echo     '<span class="slider round"></span>
+							</label>
+						</td>
+						<td>
+							<button type="submit" name="submit" class="btn btn-outline-info btn-circle btn-lg btn-circle ml-2"><i class="fa fa-check"></i> </button>
+						</td>
+						</form>
+					</tr>';
 	}
 	echo $output;
 }

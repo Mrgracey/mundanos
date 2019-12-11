@@ -206,6 +206,8 @@
         // include("seguridad.php");
         $id=$_GET['id'];
         $query = mysqli_query($con, "SELECT * FROM country WHERE id='$id' ");
+        $comments=mysqli_query($con, "SELECT * FROM comments WHERE tf_moderate=0");
+        $num_comments=mysqli_num_rows($comments);
     ?>
     <!-- ============================================================== -->
     <!-- Preloader - style you can find in spinners.css -->
@@ -274,7 +276,11 @@
                             <a class="sidebar-link has-arrow waves-effect waves-dark active" href="../dashboard.php" aria-expanded="false">
                                 <i class="fa fa-chart-line"></i>
                                 <span class="hide-menu">Dashboard</span> 
-                                
+                                <?php
+                                            if ($num_comments>0) {
+                                                echo '<span class="badge badge-inverse badge-pill ml-auto mr-3 font-medium px-2 py-1">'.$num_comments.'</span>';
+                                            }
+                                        ?>
                             </a>
                             <ul aria-expanded="false" class="collapse first-level in">
                                 <li class="sidebar-item">
@@ -293,6 +299,17 @@
                                     <a href="publicaciones.php" class="sidebar-link active">
                                         <i class="fa fa-file"></i>
                                         <span class="hide-menu"> Publicaciones </span>
+                                    </a>
+                                </li>
+                                <li class="sidebar-item">
+                                    <a href="../comentarios.php" class="sidebar-link">
+                                        <i class="fa fa-comment-dots"></i>
+                                        <span class="hide-menu"> Comentarios </span>
+                                        <?php
+                                            if ($num_comments>0) {
+                                                echo '<span class="badge badge-inverse badge-pill ml-auto mr-3 font-medium px-2 py-1">'.$num_comments.'</span>';
+                                            }
+                                        ?>
                                     </a>
                                 </li>
                             </ul>

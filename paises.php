@@ -114,9 +114,10 @@
 
 <body data-theme="dark">
     <?php
+        
         include("conexion.php");
-        // include("seguridad.php");
-        $query = mysqli_query($con, "SELECT * FROM country ");
+        $comments=mysqli_query($con, "SELECT * FROM comments WHERE tf_moderate=0");
+        $num_comments=mysqli_num_rows($comments);
     ?>
     <!-- ============================================================== -->
     <!-- Preloader - style you can find in spinners.css -->
@@ -200,7 +201,11 @@
                             <a class="sidebar-link has-arrow waves-effect waves-dark active" href="dashboard.php" aria-expanded="false">
                                 <i class="fa fa-chart-line"></i>
                                 <span class="hide-menu">Dashboard</span> 
-                                
+                                <?php
+                                    if ($num_comments>0) {
+                                        echo '<span class="badge badge-inverse badge-pill ml-auto mr-3 font-medium px-2 py-1">'.$num_comments.'</span>';
+                                    }
+                                ?>
                             </a>
                             <ul aria-expanded="false" class="collapse first-level in">
                                 <li class="sidebar-item active">
@@ -219,6 +224,17 @@
                                     <a href="publicaciones.php" class="sidebar-link">
                                         <i class="fa fa-file"></i>
                                         <span class="hide-menu"> Publicaciones </span>
+                                    </a>
+                                </li>
+                                <li class="sidebar-item">
+                                    <a href="comentarios.php" class="sidebar-link">
+                                        <i class="fa fa-comment-dots"></i>
+                                        <span class="hide-menu"> Comentarios </span>
+                                        <?php
+                                            if ($num_comments>0) {
+                                                echo '<span class="badge badge-inverse badge-pill ml-auto mr-3 font-medium px-2 py-1">'.$num_comments.'</span>';
+                                            }
+                                        ?>
                                     </a>
                                 </li>
                             </ul>
@@ -263,60 +279,90 @@
                                 <h5 class="card-title text-uppercase mb-0">Manage Users</h5>
                             </div>
                             <div class="table-responsive">
-                                <table class="table no-wrap user-table mb-0 sortable">
-                                  <thead>
-                                    <tr>
-                                      <th scope="col" class="border-0 text-uppercase font-medium pl-4">#</th>
-                                      <th scope="col" class="border-0 text-uppercase font-medium">Codigo</th>
-                                      <th scope="col" class="border-0 text-uppercase font-medium">Nombre</th>
-                                      <th scope="col" class="border-0 text-uppercase font-medium">Portada</th>
-                                      <th scope="col" class="border-0 text-uppercase font-medium">Activo</th>
-                                      <th scope="col" class="border-0 text-uppercase font-medium">Opciones</th>
-                                    </tr>
-                                  </thead>
-                                  <tbody>
-                                    
-                                    <?php
-                                    $query_paises=mysqli_query($con,"SELECT id_country, url FROM media");
-                                    while( $row=mysqli_fetch_array($query_paises)){
-                                        $id1=$row['id_country'];
-                                        $A_url[$id1]=$row['url'];
-                                    }
-                                    while( $A_row=mysqli_fetch_array($query)){
-                                    echo '<tr>
-                                            <td class="pl-4">'.utf8_encode($A_row['id']).'</td>
-                                        <td>
-                                            <h5 class="font-medium mb-0">'. $A_row['iso'].'</h5>
-                                        </td>
-                                        <td>
-                                            <span class="text-muted">'.utf8_encode($A_row['name']).'</span>
-                                        </td>
-                                        <form action="CRUDcountries/update_country.php?id='.$A_row['id'].'" method="post" enctype="multipart/form-data">
-                                        <td>';
-                                        if (isset($A_url[$A_row['id']])) {
-                                            echo '<input type="file" placeholder="'.$A_url[$A_row['id']].'" name="fileToUpload" id="fileToUpload">';
+                                    <table id="table" class="table no-wrap user-table mb-0">
+                                    <thead>
+                                        <tr>
+                                        <th scope="col" class="border-0 text-uppercase font-medium pl-4">#</th>
+                                        <th scope="col" class="border-0 text-uppercase font-medium">Codigo</th>
+                                        <th scope="col" class="border-0 text-uppercase font-medium">Nombre</th>
+                                        <th scope="col" class="border-0 text-uppercase font-medium">Portada</th>
+                                        <th scope="col" class="border-0 text-uppercase font-medium">Activo</th>
+                                        <th scope="col" class="border-0 text-uppercase font-medium">Opciones</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        
+                                        <?php
+                                        $tam=20;
+                                        if(isset($_GET['pag'])){
+                                            $pag=$_GET['pag'];
                                         }else{
-                                            echo '<input type="file" placeholder="No hay archive" name="fileToUpload" id="fileToUpload">';
+                                            $pag=1;
                                         }
-                                        echo '</td>
-                                        <td>
-                                        <label class="switch">';        
-                                            if ($A_row['tf_active']==1) {
-                                                echo   '<input type="checkbox" name="tf_active" value="1" checked>';
+                                        $ini=$pag-1;
+                                        $cuenta=$ini*$tam;
+                                        // include("seguridad.php");
+                                        $result=mysqli_query($con, "SELECT * FROM country");
+                                        $num_rows=mysqli_num_rows($result);
+                                        $query = mysqli_query($con, "SELECT * FROM country ORDER BY tf_active DESC LIMIT $cuenta, $tam");
+                                        $query_paises=mysqli_query($con,"SELECT id_country, url FROM media");
+                                        $tope=floor($num_rows/$tam)+1;
+                                        while( $row=mysqli_fetch_array($query_paises)){
+                                            $id1=$row['id_country'];
+                                            $A_url[$id1]=$row['url'];
+                                        }
+                                        while( $A_row=mysqli_fetch_array($query)){
+                                        echo '<tr>
+                                                <td class="pl-4">'.utf8_encode($A_row['id']).'</td>
+                                            <td>
+                                                <h5 class="font-medium mb-0">'. $A_row['iso'].'</h5>
+                                            </td>
+                                            <td>
+                                                <span class="text-muted">'.utf8_encode($A_row['name']).'</span>
+                                            </td>
+                                            <form action="CRUDcountries/update_country.php?id='.$A_row['id'].'" method="post" enctype="multipart/form-data">
+                                            <td>';
+                                            if (isset($A_url[$A_row['id']])) {
+                                                echo '<input type="file" name="fileToUpload" id="fileToUpload">';
                                             }else{
-                                                echo   '<input type="checkbox" name="tf_active" value="1" >';
+                                                echo '<input type="file" placeholder="No hay archive" name="fileToUpload" id="fileToUpload">';
                                             }
-                                            echo     '<span class="slider round"></span>
-                                            </label>
-                                        </td>
-                                        <td>
-                                            <button type="submit" name="submit" class="btn btn-outline-info btn-circle btn-lg btn-circle ml-2"><i class="fa fa-check"></i> </button>
-                                        </td>
-                                        </form>
-                                    </tr>';
-                                 } ?>
-                                </tbody>
-                            </table>
+                                            echo '</td>
+                                            <td>
+                                                <label class="switch">';
+                                                    if ($A_row['tf_active']==1) {
+                                                        echo   '<input type="checkbox" name="tf_active" value="1" checked>';
+                                                    }else{
+                                                        echo   '<input type="checkbox" name="tf_active" value="0" >';
+                                                    }
+                                                    echo     '<span class="slider round"></span>
+                                                </label>
+                                            </td>
+                                            <td>
+                                                <button type="submit" name="submit" class="btn btn-outline-info btn-circle btn-lg btn-circle ml-2"><i class="fa fa-check"></i> </button>
+                                            </td>
+                                            </form>
+                                        </tr>';
+                                    }
+                                        
+                                    ?>
+                                    </tbody>
+                                </table>
+                            <div style="padding: 1vh 52vh; margin: auto; display: flex; flex-wrap: wrap;">
+                                
+                                <?php
+                                for ($i=1; $i <= $tope; $i++) {
+                                        echo '
+                                        <div style="margin: 0 1vh 0 1vh;">
+                                            <a href="paises.php?pag='.$i.'">
+                                            <button type="button" class="btn btn-block btn-outline-light">'.$i.'</button>
+                                            </a>
+                                        </div>
+                                        ';
+                                    }
+                                ?>
+                                
+                            </div>
                         </div>
                         </div>
                     </div>
@@ -372,19 +418,36 @@
     <script src="Ample%20admin%20Template%20-%20The%20Ultimate%20Multipurpose%20admin%20template_archivos/dashboard3.js"></script>
 
     <script src="https://kit.fontawesome.com/614bbff60b.js" crossorigin="anonymous"></script>
-
     <script>
-      $(function() {
-        $('#usa').vectorMap({
-          map : 'world_millx',
-          backgroundColor : 'transparent',
-          zoomOnScroll: false,
-          regionStyle : {
-              initial : {
-                  fill : '#2cabe3'
-              }
-          }
+        var $buttons = $('.sort'), $tab = $("#table");
+        $buttons.click(function(e) {
+            var self = this,
+                $rows = $tab.find("tbody > tr"),
+                idx = $buttons.index(this);
+            $rows.sort(function(a, b) {
+                var $obj1 = $(a).find('td').eq(idx),
+                    $obj2 = $(b).find('td').eq(idx),
+                    value1, value2;
+                
+                if ($obj1.text().length > 0) {
+                    value1 = $obj1.text().toUpperCase(); 
+                    value2 = $obj2.text().toUpperCase();
+                } else {
+                    value1 = $obj1.find("input")[0].checked;
+                    value2 = $obj2.find("input")[0].checked
+                }
+                    
+                if ($(self).hasClass('asc')) return (value1 > value2); 
+                else return (value1 < value2); 
+                
+            });
+            
+            $(this).toggleClass('asc');
+            $.each($rows, function(index, row){
+                $tab.append(row);
+            });
+            
         });
-      });
     </script>
+
 <div class="jvectormap-tip" style="display: none; left: 624px; top: 709.5px;">Georgia</div></body></html>

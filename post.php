@@ -2,6 +2,7 @@
   include("conexion.php");
   $id=$_GET['id'];
   $query=mysqli_query($con, "SELECT * FROM posts WHERE `id`='$id'");
+  $query_comments=mysqli_query($con, "SELECT * FROM comments WHERE `id_post`='$id' and `tf_moderate`=1");
   while ($A_row=mysqli_fetch_array($query)) {
 	$title=$A_row['title'];
 	$description=$A_row['description'];
@@ -36,6 +37,68 @@
 				?>
 			</div>
 		</article><!-- #post-## -->
+		<h3 id="reply-title" class="comment-reply-title">
+			Responder 
+			<small>
+				<a rel="nofollow" id="cancel-comment-reply-link" href="/2019/06/11/belice-en-un-dia-y-medio/#respond" style="display:none;">Cancelar respuesta</a>
+			</small>
+		</h3>
+		<div class="comment-form-field comment-textarea">
+			<form action="C_comment_mysql.php" method="post" id="commentform" class="comment-form" novalidate="">
+				<div id="comment-form-comment" class="">
+					<?php
+						echo '<input type="hidden" name="id" value="'.$id.'">';
+					?>
+					<input type="text" placeholder="Nombre?" name="name" style="padding: 10px;width: 40%;background: #f1f2f3;border: 1px solid #f1f2f3;">
+					<br>
+					<br>
+					<input type="text" placeholder="E-mail" name="email" style="padding: 10px;width: 60%;background: #f1f2f3;border: 1px solid #f1f2f3;">
+					<br>
+					<br>
+					<textarea aria-hidden="true" tabindex="-1" style="position: absolute; inset: -999px auto auto 0px; border: 0px none; padding: 0px; box-sizing: content-box; overflow-wrap: break-word; height: 0px !important; min-height: 0px !important; overflow: hidden; transition: none 0s ease 0s; font-family: &quot;Source Sans Pro&quot;, sans-serif; font-size: 14px; font-weight: 400; font-style: normal; letter-spacing: 0px; text-transform: none; text-decoration: rgba(0, 0, 0, 0.7); word-spacing: 0px; text-indent: 0px; line-height: 21px; width: 818px;" class="autosizejs "></textarea>
+					<textarea id="comment" name="comment" title="Introduce aquí tu comentario..." placeholder="Introduce aquí tu comentario..." style="height: 70px; overflow: hidden; overflow-wrap: break-word; resize: none; display: inline-block;"></textarea>
+					<br>
+					<br>
+					<div style="float: right;">
+						<p class="form-submit" style="display: block;">
+							<input name="submit" type="submit" id="comment-submit" class="submit" value="Publicar comentario">
+							<input type="hidden" name="comment_post_ID" value="736" id="comment_post_ID">
+							<input type="hidden" name="comment_parent" id="comment_parent" value="0">
+						</p>
+					</div>
+				</div>
+			</form>
+		</div>
+		<br>
+		<h3 id="reply-title" class="comment-reply-title">
+			Comentarios
+		</h3>
+		<ol class="comment-list">
+			<li id="comment-6" class="comment even thread-even depth-1 highlander-comment">
+			<?php
+				while ($A_row=mysqli_fetch_array($query_comments)) {
+						echo '<article id="div-comment-6" class="comment-body clear">
+							<div style = "border-bottom: 1px solid #f1f2f3;" class="comment-content">
+								<footer class="comment-meta">
+									<div>
+										<cite class="fn">'.$A_row['name'].'</cite>
+									</div>
+									<div class="comment-meta-details">
+										<span class="comment-meta-time">
+											<a href="#">
+												<time datetime="2019-12-06T04:12:35+00:00">'.$A_row['uploaded_at'].'</time>
+											</a>
+										</span>
+									</div>
+								</footer>
+								<p>'.$A_row['comment'].'</p>
+							</div><!-- .comment-content -->
+						</article><!-- .comment-body -->
+						<br>';
+					}
+				?>
+			</li><!-- #comment-## -->
+		</ol>
 	</main><!-- #main -->
 </div><!-- #primary -->
 

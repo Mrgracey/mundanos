@@ -1,6 +1,5 @@
 
-<div style="display: flex; 
-align-content: center;" id="container">
+<div style="display: flex;align-content: center;-ms-transform: rotate(180deg);-webkit-transform: rotate(180deg);transform: rotate(180deg);" id="container">
   <svg enable_background="new 0 0 1000 647" height="100%" pretty_print="False" style="stroke-linejoin: round; stroke:#000; fill: none;" version="1.1" viewBox="0 0 1000 647" width="100%" xmlns="http://www.w3.org/2000/svg" xlink:href="http://www.w3.org/1999/xlink">
     <defs>
       <style type="text/css">
@@ -281,16 +280,14 @@ align-content: center;" id="container">
     $A_tf[]=$A_row['tf_active'];
   }
   
-  // for($i=0;$i<count($A_ISO);$i++){
-  //  echo $A_ISO[$i].'<br>';
-  // }
 ?> 
 <script>
   var isoJS=<?php echo json_encode($A_ISO);?>;
   var tfJS=<?php echo json_encode($A_tf);?>;
+  
   for (i = 0; i < isoJS.length; i++) { 
-    
-    
+      
+   
     if (tfJS[i]==1) {
       $( '#'+isoJS[i] ).addClass("active");
       $( '#'+isoJS[i] ).click(function(){

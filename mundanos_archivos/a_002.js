@@ -454,6 +454,10 @@ var wpcom_img_zoomer = {
 		if ( img.parentNode.className.match(/slideshow-slide/) )
 			return false;
 
+		// Skip CoBlocks Lightbox images
+		if ( img.parentNode.className.match(/coblocks-lightbox__image/) )
+			return false;
+
 		// Scale gravatars that have ?s= or ?size=
 		if ( img.src.match( /^https?:\/\/([^\/]*\.)?gravatar\.com\/.+[?&](s|size)=/ ) ) {
                         if ( this.hintsFor( "gravatar" ) === true ) {

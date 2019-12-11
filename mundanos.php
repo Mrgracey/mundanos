@@ -88,7 +88,9 @@ img.emoji {
 .deactive{
 	color: #24282d !important;
 }
-
+.upload{
+	max-width: 100%;
+}
 </style>
 	<link rel="stylesheet" id="all-css-0-1" href="mundanos_archivos/a.css" type="text/css" media="all">
 <link rel="stylesheet" id="wpcom-block-editor-styles-css" href="mundanos_archivos/common.css" media="all">
@@ -153,7 +155,7 @@ body.custom-background { background-color: #c69885; }
 	<header id="masthead" class="site-header" role="banner">
 		
 		<div class="site-branding">
-			<a href="https://mundanos.net/" class="site-logo-link" rel="home" itemprop="url"><img src="mundanos_archivos/mundo3.png" class="site-logo attachment-illustratr-logo" alt="" data-size="illustratr-logo" itemprop="logo" srcset="https://mundanos783251065.files.wordpress.com/2019/04/mundo3.png?w=348 348w, https://mundanos783251065.files.wordpress.com/2019/04/mundo3.png?w=696 696w, https://mundanos783251065.files.wordpress.com/2019/04/mundo3.png?w=150 150w, https://mundanos783251065.files.wordpress.com/2019/04/mundo3.png?w=300 300w" sizes="(max-width: 348px) 100vw, 348px" data-attachment-id="427" data-permalink="https://mundanos.net/mundo3/" data-orig-file="https://mundanos783251065.files.wordpress.com/2019/04/mundo3.png" data-orig-size="968,501" data-comments-opened="1" data-image-meta="{&quot;aperture&quot;:&quot;0&quot;,&quot;credit&quot;:&quot;&quot;,&quot;camera&quot;:&quot;&quot;,&quot;caption&quot;:&quot;&quot;,&quot;created_timestamp&quot;:&quot;0&quot;,&quot;copyright&quot;:&quot;&quot;,&quot;focal_length&quot;:&quot;0&quot;,&quot;iso&quot;:&quot;0&quot;,&quot;shutter_speed&quot;:&quot;0&quot;,&quot;title&quot;:&quot;&quot;,&quot;orientation&quot;:&quot;0&quot;}" data-image-title="mundo3" data-image-description="" data-medium-file="https://mundanos783251065.files.wordpress.com/2019/04/mundo3.png?w=300" data-large-file="https://mundanos783251065.files.wordpress.com/2019/04/mundo3.png?w=840" width="348" height="180"></a>			<h1 class="site-title"><a href="https://mundanos.net/" rel="home">MUNDANOS</a></h1>
+			<a href="mundanos.php" class="site-logo-link" rel="home" itemprop="url"><img src="mundanos_archivos/mundo3.png" class="site-logo attachment-illustratr-logo" alt="" data-size="illustratr-logo" itemprop="logo" srcset="https://mundanos783251065.files.wordpress.com/2019/04/mundo3.png?w=348 348w, https://mundanos783251065.files.wordpress.com/2019/04/mundo3.png?w=696 696w, https://mundanos783251065.files.wordpress.com/2019/04/mundo3.png?w=150 150w, https://mundanos783251065.files.wordpress.com/2019/04/mundo3.png?w=300 300w" sizes="(max-width: 348px) 100vw, 348px" data-attachment-id="427" data-permalink="https://mundanos.net/mundo3/" data-orig-file="https://mundanos783251065.files.wordpress.com/2019/04/mundo3.png" data-orig-size="968,501" data-comments-opened="1" data-image-meta="{&quot;aperture&quot;:&quot;0&quot;,&quot;credit&quot;:&quot;&quot;,&quot;camera&quot;:&quot;&quot;,&quot;caption&quot;:&quot;&quot;,&quot;created_timestamp&quot;:&quot;0&quot;,&quot;copyright&quot;:&quot;&quot;,&quot;focal_length&quot;:&quot;0&quot;,&quot;iso&quot;:&quot;0&quot;,&quot;shutter_speed&quot;:&quot;0&quot;,&quot;title&quot;:&quot;&quot;,&quot;orientation&quot;:&quot;0&quot;}" data-image-title="mundo3" data-image-description="" data-medium-file="https://mundanos783251065.files.wordpress.com/2019/04/mundo3.png?w=300" data-large-file="https://mundanos783251065.files.wordpress.com/2019/04/mundo3.png?w=840" width="348" height="180"></a>			<h1 class="site-title"><a href="https://mundanos.net/" rel="home">MUNDANOS</a></h1>
 			<h2 class="site-description">Viajes, relatos y retratos</h2>
 		</div><!-- .site-branding -->
 
@@ -168,12 +170,13 @@ body.custom-background { background-color: #c69885; }
 		<li id="menu-item-90" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-90"><a id="paises" class="deactive" href="#" onClick="cargarIndexPais()">PAÍSES</a>
 <ul class="sub-menu">
   <?php
-    $query_paises=mysqli_query($con,"SELECT id, name FROM country WHERE tf_active=1");
+	$A_country_id=array(0);
+    $query_paises=mysqli_query($con,"SELECT id, name, iso FROM country WHERE tf_active=1");
     while( $row=mysqli_fetch_array($query_paises)){
         $A_country[]=$row['name'];
         $A_country_id[]=$row['id'];
-
-        echo '<li id="menu-item-556" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-556"><a href="paises/'.strtolower(utf8_encode($row['name'])).'.php">'.utf8_encode($row['name']).'</a></li>';
+		$A_is[]=$row['iso'];
+        echo '<li id="menu-item-556" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-556"><a class="pais deactive" id="'.$row['iso'].'" id="'.$row['id'].'" href="#" onClick="cargarPais(this.id)">'.utf8_encode($row['name']).'</a></li>';
     }
 	
 		
@@ -181,10 +184,10 @@ body.custom-background { background-color: #c69885; }
 </ul>
 </li>
 <li id="menu-item-126" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-126"><a id="mapa" class="deactive" href="#" onClick="cargarMapa()">MAPA</a></li>
-<li id="menu-item-559" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-559"><a id="guias" class="deactive" href="guias.php">Guías</a></li>
-<li id="menu-item-124" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-124"><a id="sobre-mi" class="deactive" href="sobre-mi.html">SOBRE MÍ</a>
+<li id="menu-item-559" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-559"><a id="guias" class="deactive" href="#" onClick="cargarGuias()">Guías</a></li>
+<li id="menu-item-124" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-124"><a id="sobre-mi" class="deactive" href="#" onClick="cargarSobreMi()">SOBRE MÍ</a>
 <ul class="sub-menu">
-	<li id="menu-item-10" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-10"><a href="contacto.html">Contacto</a></li>
+	<li id="menu-item-10" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-10"><a id="contacto" class="deactive" href="#" onClick="cargarContacto()">Contacto</a></li>
 </ul>
 </li>
 </ul></div>			</nav><!-- #site-navigation -->
@@ -241,64 +244,206 @@ var WPGroHo = {"my_hash":""};
 <script src="js/jquery-3.4.1.min.js"></script>
 <script>
 	$( "#content" ).load( "index.php");
-			// activar botones
-			// inicio
-			$("#index").removeClass("deactive");
-			$("#index").addClass("active");
+	// activar botones
+		// inicio
+		$("#index").removeClass("deactive");
+		$("#index").addClass("active");
+	// la propuesta
+    $("#propuesta").removeClass("active");
+    $("#propuesta").addClass("deactive");
+	// paises
+	$("#paises").removeClass("active");
+	$("#paises").addClass("deactive");
+	// mapa
+	$("#mapa").removeClass("active");
+	$("#mapa").addClass("deactive");
+	// guias
+	$("#guias").removeClass("active");
+	$("#guias").addClass("deactive");
+	// sobre mi
+	$("#sobre-mi").removeClass("active");
+	$("#sobre-mi").addClass("deactive");
+	//pais
+	var idJS=<?php echo json_encode($A_country_id);?>;
+  		for (i = 0; i < idJS.length; i++) {
+			$( '#'+idJS[i] ).removeClass("active");
+			$( '#'+idJS[i] ).addClass("deactive");
+  		}
+	function cargarPropuesta() {
+		//cargar propuesta
+        $( "#content" ).load( "propuesta.html");
+		// activar botones
+		// inicio
+		$("#index").removeClass("active");
+		$("#index").addClass("deactive");
 			// la propuesta
-        	$("#propuesta").removeClass("active");
-        	$("#propuesta").addClass("deactive");
-			// paises
-			$("#paises").removeClass("active");
-			$("#paises").addClass("deactive");
-			// mapa
-			$("#mapa").removeClass("active");
-			$("#mapa").addClass("deactive");
-			// guias
-			$("#guias").removeClass("active");
-			$("#guias").addClass("deactive");
-			// sobre mi
-			$("#sobre-mi").removeClass("active");
-			$("#sobre-mi").addClass("deactive");
-		function cargarPropuesta() {
-			//cargar propuesta
-            $( "#content" ).load( "propuesta.html");
-
-			// activar botones
-			// inicio
-			$("#index").removeClass("active");
-			$("#index").addClass("deactive");
-				// la propuesta
-				$("#propuesta").removeClass("deactive");
-				$("#propuesta").addClass("active");
-				// paises
-				$("#paises").removeClass("active");
-				$("#paises").addClass("deactive");
-			// mapa
-			$("#mapa").removeClass("active");
-			$("#mapa").addClass("deactive");
-			// guias
-			$("#guias").removeClass("active");
-			$("#guias").addClass("deactive");
-			// sobre mi
-			$("#sobre-mi").removeClass("active");
-			$("#sobre-mi").addClass("deactive");
-               
-		}
-		function cargarIndexPais() {
-			//cargar paises
-            $( "#content" ).load( "indexpais.php"); 
-
-			// activar botones
-			// inicio
-			$("#index").removeClass("active");
-			$("#index").addClass("deactive");
-			// la propuesta
-        	$("#propuesta").removeClass("active");
-        	$("#propuesta").addClass("deactive");
+			$("#propuesta").removeClass("deactive");
+			$("#propuesta").addClass("active");
+		// paises
+		$("#paises").removeClass("active");
+		$("#paises").addClass("deactive");
+		// mapa
+		$("#mapa").removeClass("active");
+		$("#mapa").addClass("deactive");
+		// guias
+		$("#guias").removeClass("active");
+		$("#guias").addClass("deactive");
+		// sobre mi
+		$("#sobre-mi").removeClass("active");
+		$("#sobre-mi").addClass("deactive");
+		//pais
+		var idJS=<?php echo json_encode($A_country_id);?>;
+  		for (i = 0; i < idJS.length; i++) {
+			$( '#'+idJS[i] ).removeClass("active");
+			$( '#'+idJS[i] ).addClass("deactive");
+  		}
+           
+	}
+	function cargarIndexPais() {
+		//cargar paises
+        $( "#content" ).load( "indexpais.php"); 
+		// activar botones
+		// inicio
+		$("#index").removeClass("active");
+		$("#index").addClass("deactive");
+		// la propuesta
+		$("#propuesta").removeClass("active");
+		$("#propuesta").addClass("deactive");
 			// paises
 			$("#paises").removeClass("deactive");
 			$("#paises").addClass("active");
+		// mapa
+		$("#mapa").removeClass("active");
+		$("#mapa").addClass("deactive");
+		// guias
+		$("#guias").removeClass("active");
+		$("#guias").addClass("deactive");
+		// sobre mi
+		$("#sobre-mi").removeClass("active");
+		$("#sobre-mi").addClass("deactive");
+		//pais
+		var idJS=<?php echo json_encode($A_country_id);?>;
+  		for (i = 0; i < idJS.length; i++) {
+			$( '#'+idJS[i] ).removeClass("active");
+			$( '#'+idJS[i] ).addClass("deactive");
+  		}
+	}
+	
+	function cargarMapa() {
+		// cargar mapa
+		$( "#content" ).load( "mapa.php");
+        
+		// activar botones
+		// inicio
+		$("#index").removeClass("active");
+		$("#index").addClass("deactive");
+		// la propuesta
+    	$("#propuesta").removeClass("active");
+    	$("#propuesta").addClass("deactive");
+		// paises
+		$("#paises").removeClass("active");
+		$("#paises").addClass("deactive");
+			// mapa
+			$("#mapa").removeClass("deactive");
+			$("#mapa").addClass("active");
+		// guias
+		$("#guias").removeClass("active");
+		$("#guias").addClass("deactive");
+		// sobre mi
+		$("#sobre-mi").removeClass("active");
+		$("#sobre-mi").addClass("deactive");
+		//pais
+		var idJS=<?php echo json_encode($A_country_id);?>;
+  		for (i = 0; i < idJS.length; i++) {
+			$( '#'+idJS[i] ).removeClass("active");
+			$( '#'+idJS[i] ).addClass("deactive");
+  		}
+		
+	}
+	function page2() {
+		// cargar mapa
+		$( "#content" ).load( "guias2.html");
+	}
+	
+	function page3() {
+		// cargar mapa
+		$( "#content" ).load( "guias3.html");
+
+	}
+	function cargarGuias() {
+		// cargar mapa
+		$( "#content" ).load( "guias.html");
+        
+		// activar botones
+		// inicio
+		$("#index").removeClass("active");
+		$("#index").addClass("deactive");
+		// la propuesta
+    	$("#propuesta").removeClass("active");
+    	$("#propuesta").addClass("deactive");
+		// paises
+		$("#paises").removeClass("active");
+		$("#paises").addClass("deactive");
+		// mapa
+		$("#mapa").removeClass("active");
+		$("#mapa").addClass("deactive");
+			// guias
+			$("#guias").removeClass("deactive");
+			$("#guias").addClass("active");
+		// sobre mi
+		$("#sobre-mi").removeClass("active");
+		$("#sobre-mi").addClass("deactive");
+		//pais
+		var idJS=<?php echo json_encode($A_country_id);?>;
+  		for (i = 0; i < idJS.length; i++) {
+			$( '#'+idJS[i] ).removeClass("active");
+			$( '#'+idJS[i] ).addClass("deactive");
+  		}
+	}
+	function cargarSobreMi() {
+		// cargar mapa
+		$( "#content" ).load( "sobre.html");
+        
+		// activar botones
+		// inicio
+		$("#index").removeClass("active");
+		$("#index").addClass("deactive");
+		// la propuesta
+    	$("#propuesta").removeClass("active");
+    	$("#propuesta").addClass("deactive");
+		// paises
+		$("#paises").removeClass("active");
+		$("#paises").addClass("deactive");
+		// mapa
+		$("#mapa").removeClass("active");
+		$("#mapa").addClass("deactive");
+		// guias
+		$("#guias").removeClass("active");
+		$("#guias").addClass("deactive");
+			// sobre mi
+			$("#sobre-mi").removeClass("deactive");
+			$("#sobre-mi").addClass("active");
+		//pais
+		var idJS=<?php echo json_encode($A_country_id);?>;
+  		for (i = 0; i < idJS.length; i++) {
+			$( '#'+idJS[i] ).removeClass("active");
+			$( '#'+idJS[i] ).addClass("deactive");
+  		}
+	}
+	
+	function cargarPais(clicked_id){
+		$( "#content" ).load('pais.php?id='+ clicked_id );
+
+			// activar botones
+			// inicio
+			$("#index").removeClass("active");
+			$("#index").addClass("deactive");
+			// la propuesta
+			$("#propuesta").removeClass("active");
+			$("#propuesta").addClass("deactive");
+			// paises
+			$("#paises").removeClass("active");
+			$("#paises").addClass("deactive");
 			// mapa
 			$("#mapa").removeClass("active");
 			$("#mapa").addClass("deactive");
@@ -308,40 +453,48 @@ var WPGroHo = {"my_hash":""};
 			// sobre mi
 			$("#sobre-mi").removeClass("active");
 			$("#sobre-mi").addClass("deactive");
-		}
-		function cargarMapa() {
-			// cargar mapa
-			$( "#content" ).load( "mapa.php");
-            
-			// activar botones
-			// inicio
-			$("#index").removeClass("active");
-			$("#index").addClass("deactive");
-			// la propuesta
-        	$("#propuesta").removeClass("active");
-        	$("#propuesta").addClass("deactive");
-			// paises
-			$("#paises").removeClass("active");
-			$("#paises").addClass("deactive");
-			// mapa
-			$("#mapa").removeClass("deactive");
-			$("#mapa").addClass("active");
-			// guias
-			$("#guias").removeClass("active");
-			$("#guias").addClass("deactive");
-			// sobre mi
-			$("#sobre-mi").removeClass("active");
-			$("#sobre-mi").addClass("deactive");
-		}
-		
+				//pais
+				$('.pais').removeClass("active");
+				$('.pais').addClass("deactive");
+				$('#' + clicked_id).removeClass("deactive"); 
+				$('#' + clicked_id).addClass("active");
+	}
+	  function cargarContacto() {
+		//cargar paises
+        $( "#content" ).load( "contacto.php"); 
+		// activar botones
+		// inicio
+		$("#index").removeClass("active");
+		$("#index").addClass("deactive");
+		// la propuesta
+		$("#propuesta").removeClass("active");
+		$("#propuesta").addClass("deactive");
+		// paises
+		$("#paises").removeClass("active");
+		$("#paises").addClass("deactive");
+		// mapa
+		$("#mapa").removeClass("active");
+		$("#mapa").addClass("deactive");
+		// guias
+		$("#guias").removeClass("active");
+		$("#guias").addClass("deactive");
+		// sobre mi
+		$("#sobre-mi").removeClass("active");
+		$("#sobre-mi").addClass("deactive");
+			// contacto
+			$("#contacto").removeClass("deactive");
+			$("#contacto").addClass("active");
+		//pais
+		var idJS=<?php echo json_encode($A_country_id);?>;
+  		for (i = 0; i < idJS.length; i++) {
+			$( '#'+idJS[i] ).removeClass("active");
+			$( '#'+idJS[i] ).addClass("deactive");
+  		}
+	}
 </script>
 <script>
 var comment_like_text = {"loading":"Cargando..."};
 </script>
-<script>
-var actionbardata = {"siteID":"160719501","siteName":"MUNDANOS","siteURL":"https:\/\/mundanos.net","icon":"<img alt='' src='https:\/\/mundanos783251065.files.wordpress.com\/2019\/04\/cropped-mundo3-1.png?w=50' class='avatar avatar-50' height='50' width='50' \/>","canManageOptions":"","canCustomizeSite":"","isFollowing":"","themeSlug":"pub\/illustratr","signupURL":"https:\/\/wordpress.com\/start\/","loginURL":"https:\/\/wordpress.com\/log-in?redirect_to=https%3A%2F%2Fmundanos.net%2F&signup_flow=account&domain=mundanos.net","themeURL":"https:\/\/wordpress.com\/theme\/illustratr\/","xhrURL":"https:\/\/mundanos.net\/wp-admin\/admin-ajax.php","nonce":"ab6528c076","isSingular":"1","isFolded":"","isLoggedIn":"","isMobile":"","subscribeNonce":"<input type=\"hidden\" id=\"_wpnonce\" name=\"_wpnonce\" value=\"457ea61862\" \/>","referer":"https:\/\/mundanos.net\/","canFollow":"1","feedID":"95598449","statusMessage":"","customizeLink":"https:\/\/mundanos783251065.wordpress.com\/wp-admin\/customize.php?url=https%3A%2F%2Fmundanos783251065.wordpress.com%2F","postID":"43","shortlink":"https:\/\/wp.me\/PaSmu1-H","canEditPost":"","editLink":"https:\/\/wordpress.com\/page\/mundanos.net\/43","statsLink":"https:\/\/wordpress.com\/stats\/post\/43\/mundanos.net","i18n":{"view":"Ver sitio","follow":"Seguir","following":"Siguiendo","edit":"Editar","login":"Acceder","signup":"Reg\u00edstrate","customize":"Personalizar","report":"Denunciar este contenido","themeInfo":"Obtener el tema: Illustratr","shortlink":"Copiar enlace corto","copied":"Copiado","followedText":"Las nuevas publicaciones de este sitio aparecer\u00e1n ahora en tu <a href=\"https:\/\/wordpress.com\/\">Lector<\/a>","foldBar":"Contraer esta barra","unfoldBar":"Expandir esta barra","editSubs":"Gestionar las suscripciones","viewReader":"Ver sitio en el Lector","viewReadPost":"View post in Reader","subscribe":"Suscr\u00edbeme","enterEmail":"Introduce tu email","followers":"\u00danete a otros 5.930 seguidores","alreadyUser":"\u00bfYa tienes una cuenta de WordPress.com? <a href=\"https:\/\/wordpress.com\/log-in?redirect_to=https%3A%2F%2Fmundanos.net%2F&signup_flow=account&domain=mundanos.net\">Accede ahora<\/a>.","stats":"Estad\u00edsticas"}};
-</script>
-<script type="text/javascript" src="mundanos_archivos/a_002.js"></script><div id="actionbar" class="actnbr-pub-illustratr actnbr-has-follow"><ul><li class="actnbr-btn actnbr-hidden"> 			    	<a class="actnbr-action actnbr-actn-follow" href=""><svg class="gridicon gridicon__follow" height="24px" width="24px" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><g><path d="M23 16v2h-3v3h-2v-3h-3v-2h3v-3h2v3h3zM20 2v9h-4v3h-3v4H4c-1.1 0-2-.9-2-2V2h18zM8 13v-1H4v1h4zm3-3H4v1h7v-1zm0-2H4v1h7V8zm7-4H4v2h14V4z"></path></g></svg><span>Seguir</span></a> 			    	<div class="actnbr-popover tip tip-top-left actnbr-notice"> 			    		<div class="tip-arrow"></div> 			    		<div class="tip-inner actnbr-follow-bubble"></div> 			    	</div> 			    </li><li class="actnbr-ellipsis actnbr-hidden"> 			  <svg class="gridicon gridicon__ellipsis" height="24" width="24" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><g><circle cx="5" cy="12" r="2"></circle><circle cx="19" cy="12" r="2"></circle><circle cx="12" cy="12" r="2"></circle></g></svg> 			  <div class="actnbr-popover tip tip-top-left actnbr-more"> 			  	<div class="tip-arrow"></div> 			  	<div class="tip-inner"> 				  <ul> 				    <li class="actnbr-sitename"><a href="https://mundanos.net/"><img alt="" src="mundanos_archivos/cropped-mundo3-1.png" class="avatar avatar-50" width="50" height="50"> MUNDANOS</a></li> 				   	<li class="actnbr-folded-customize"><a href="https://mundanos783251065.wordpress.com/wp-admin/customize.php?url=https%3A%2F%2Fmundanos783251065.wordpress.com%2F"><svg class="gridicon gridicon__customize" height="20px" width="20px" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><g><path d="M2 6c0-1.505.78-3.08 2-4 0 .845.69 2 2 2 1.657 0 3 1.343 3 3 0 .386-.08.752-.212 1.09.74.594 1.476 1.19 2.19 1.81L8.9 11.98c-.62-.716-1.214-1.454-1.807-2.192C6.753 9.92 6.387 10 6 10c-2.21 0-4-1.79-4-4zm12.152 6.848l1.34-1.34c.607.304 1.283.492 2.008.492 2.485 0 4.5-2.015 4.5-4.5 0-.725-.188-1.4-.493-2.007L18 9l-2-2 3.507-3.507C18.9 3.188 18.225 3 17.5 3 15.015 3 13 5.015 13 7.5c0 .725.188 1.4.493 2.007L3 20l2 2 6.848-6.848c1.885 1.928 3.874 3.753 5.977 5.45l1.425 1.148 1.5-1.5-1.15-1.425c-1.695-2.103-3.52-4.092-5.448-5.977z" data-reactid=".2.1.1:0.1b.0"></path></g></svg><span>Personalizar<span></span></span></a></li> 				    <li class="actnbr-folded-follow"><a class="actnbr-action actnbr-actn-follow" href=""><svg class="gridicon gridicon__follow" height="24px" width="24px" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><g><path d="M23 16v2h-3v3h-2v-3h-3v-2h3v-3h2v3h3zM20 2v9h-4v3h-3v4H4c-1.1 0-2-.9-2-2V2h18zM8 13v-1H4v1h4zm3-3H4v1h7v-1zm0-2H4v1h7V8zm7-4H4v2h14V4z"></path></g></svg><span>Seguir</span></a></li> 					<li class="actnbr-signup"><a href="https://wordpress.com/start/">Regístrate</a></li> 				    <li class="actnbr-login"><a href="https://wordpress.com/log-in?redirect_to=https%3A%2F%2Fmundanos.net%2F&amp;signup_flow=account&amp;domain=mundanos.net">Acceder</a></li> 				     				    <li class="actnbr-shortlink"><a href="https://wp.me/PaSmu1-H">Copiar enlace corto</a></li> 				    <li class="flb-report"><a href="http://en.wordpress.com/abuse/">Denunciar este contenido</a></li> 				     				     				    <li class="actnbr-subs"><a href="https://subscribe.wordpress.com/">Gestionar las suscripciones</a></li> 				    <li class="actnbr-fold"><a href="">Contraer esta barra</a></li> 			      </ul> 			    </div> 		      </div> 		    </li> 	      </ul></div>
 <script type="text/javascript">
 // <![CDATA[
 (function() {
