@@ -18,9 +18,7 @@
     s.parentNode.insertBefore(wf, s);
 	})();
 </script><style id="jetpack-custom-fonts-css">.wf-active body, .wf-active button, .wf-active input, .wf-active select, .wf-active textarea{font-family:"Karla",sans-serif}.wf-active blockquote{font-family:"Karla",sans-serif}.wf-active .site-description{font-family:"Karla",sans-serif}.wf-active .widget_rss .rss-date{font-family:"Karla",sans-serif}.wf-active .taxonomy-description{font-family:"Karla",sans-serif}.wf-active .cat-links, .wf-active .featured-post{font-family:"Karla",sans-serif}.wf-active .entry-meta{font-family:"Karla",sans-serif}.wf-active .site-main .portfolio-entry-meta{font-family:"Karla",sans-serif}.wf-active .comment-list .pingback .comment-body{font-family:"Karla",sans-serif}.wf-active .comment-meta-details{font-family:"Karla",sans-serif}.wf-active .no-comments{font-family:"Karla",sans-serif}.wf-active .wp-caption .wp-caption-dd, .wf-active .wp-caption .wp-caption-text{font-family:"Karla",sans-serif}.wf-active .gallery .gallery-item .gallery-caption{font-family:"Karla",sans-serif}.wf-active .tiled-gallery .tiled-gallery-caption{font-family:"Karla",sans-serif}.wf-active .entry-content > .jp-relatedposts .jp-relatedposts-post .jp-relatedposts-post-context, .wf-active .entry-sharedaddy > .jp-relatedposts .jp-relatedposts-post .jp-relatedposts-post-context, .wf-active .page-content > .jp-relatedposts .jp-relatedposts-post .jp-relatedposts-post-context, .wf-active .page-content > .sharedaddy .jp-relatedposts .jp-relatedposts-post .jp-relatedposts-post-context, .wf-active .entry-content > .sharedaddy .jp-relatedposts .jp-relatedposts-post .jp-relatedposts-post-context, .wf-active .entry-sharedaddy > .sharedaddy .jp-relatedposts .jp-relatedposts-post .jp-relatedposts-post-context{font-family:"Karla",sans-serif}.wf-active h1, .wf-active h2:not(.site-description), .wf-active h3, .wf-active h4, .wf-active h5, .wf-active h6{font-family:"Muli",sans-serif;font-weight:400;font-style:normal}.wf-active h1{font-size:1.26em;font-style:normal;font-weight:400}.wf-active h2:not(.site-description){font-size:1.12em;font-style:normal;font-weight:400}.wf-active h3{font-size:0.98em;font-style:normal;font-weight:400}.wf-active h4{font-size:0.84em;font-style:normal;font-weight:400}.wf-active h5{font-size:0.7em;font-style:normal;font-weight:400}.wf-active h6{font-size:0.56em;font-style:normal;font-weight:400}.wf-active .site-title{font-family:"Muli",sans-serif;font-size:2.52em;font-weight:400;font-style:normal}@media screen and (max-width: 767px){.wf-active .site-title{font-size:1.4em;font-style:normal;font-weight:400}}</style>
-
 <!-- Async WordPress.com Remote Login -->
-
 <link rel="dns-prefetch" href="https://s2.wp.com/">
 <link rel="dns-prefetch" href="https://s1.wp.com/">
 <link rel="dns-prefetch" href="https://mundanos783251065.wordpress.com/">
@@ -62,29 +60,24 @@ img.emoji {
 	background: none !important;
 	padding: 0 !important;
 }
-
 .grid-container {
   display: grid;
   grid-template-columns: auto auto;
   grid-gap: 5%;
   padding: 10px;
 }
-
 .grid-container > div {
   text-align: center;
   padding: 20px 0;
   font-size: 30px;
 }
-
 .item1 {
   grid-row-start: 1;
   grid-row-end: 2;
 }
-
 .active{
 	color: #e06d5e !important;
 }
-
 .deactive{
 	color: #24282d !important;
 }
@@ -221,15 +214,12 @@ var WPGroHo = {"my_hash":""};
 	<script>
 		//initialize and attach hovercards to all gravatars
 		jQuery( document ).ready( function( $ ) {
-
 			if (typeof Gravatar === "undefined"){
 				return;
 			}
-
 			if ( typeof Gravatar.init !== "function" ) {
 				return;
 			}			
-
 			Gravatar.profile_cb = function( hash, id ) {
 				WPGroHo.syncProfileData( hash, id );
 			};
@@ -368,7 +358,6 @@ var WPGroHo = {"my_hash":""};
 	function page3() {
 		// cargar mapa
 		$( "#content" ).load( "guias3.html");
-
 	}
 	function cargarGuias() {
 		// cargar mapa
@@ -433,7 +422,6 @@ var WPGroHo = {"my_hash":""};
 	
 	function cargarPais(clicked_id){
 		$( "#content" ).load('pais.php?id='+ clicked_id );
-
 			// activar botones
 			// inicio
 			$("#index").removeClass("active");
@@ -524,7 +512,6 @@ _stq.push([ 'clickTrackerInit', '160719501', '43' ]);
 <noscript><img src="https://pixel.wp.com/b.gif?v=noscript" style="height:0px;width:0px;overflow:hidden" alt="" /></noscript>
 <script>
 if ( 'object' === typeof wpcom_mobile_user_agent_info ) {
-
 	wpcom_mobile_user_agent_info.init();
 	var mobileStatsQueryString = "";
 	
@@ -536,7 +523,6 @@ if ( 'object' === typeof wpcom_mobile_user_agent_info ) {
 	
 	if( wpcom_mobile_user_agent_info.isIPad() )
 		mobileStatsQueryString += "&x_" + 'ipad_views' + '=' + 'views';
-
 	if( "" != mobileStatsQueryString ) {
 		new Image().src = document.location.protocol + '//pixel.wp.com/g.gif?v=wpcom-no-pv' + mobileStatsQueryString + '&baba=' + Math.random();
 	}
