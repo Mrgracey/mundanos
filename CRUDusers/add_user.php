@@ -1,3 +1,6 @@
+<?php
+    include("../seguridad.php");
+?>
 <!DOCTYPE html>
 <html dir="ltr" lang="en"><head>
 <meta http-equiv="content-type" content="text/html; charset=UTF-8">
@@ -8,9 +11,8 @@
     <meta name="description" content="">
     <meta name="author" content="">
     <!-- Favicon icon -->
-    <link rel="icon" type="image/png" sizes="16x16" href="https://ampleadmin.wrappixel.com/assets/images/favicon.png">
-    <title>Ample admin Template - The Ultimate Multipurpose admin template</title>
-	<link rel="canonical" href="https://www.wrappixel.com/templates/ampleadmin/">
+    <link rel="icon" type="image/png" sizes="16x16" href="../wp_template/cropped-mundo3-1.png">
+    <title>MUNDANOS - Admin Dashboard</title>
     <!-- This Page CSS -->
     <link href="../Ample%20admin%20Template%20-%20The%20Ultimate%20Multipurpose%20admin%20template_archivos/chartist.css" rel="stylesheet">
     <link href="../Ample%20admin%20Template%20-%20The%20Ultimate%20Multipurpose%20admin%20template_archivos/chartist-plugin-tooltip.css" rel="stylesheet">
@@ -174,7 +176,7 @@
 
 <body data-theme="dark">
     <?php
-        include("conexion.php");
+        include("../conexion.php");
         $comments=mysqli_query($con, "SELECT * FROM comments WHERE tf_moderate=0");
         $num_comments=mysqli_num_rows($comments);
     ?>

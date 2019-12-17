@@ -8,9 +8,8 @@
     <meta name="description" content="">
     <meta name="author" content="">
     <!-- Favicon icon -->
-    <link rel="icon" type="image/png" sizes="16x16" href="https://ampleadmin.wrappixel.com/assets/images/favicon.png">
-    <title>Ample admin Template - The Ultimate Multipurpose admin template</title>
-	<link rel="canonical" href="https://www.wrappixel.com/templates/ampleadmin/">
+    <link rel="icon" type="image/png" sizes="16x16" href="wp_template/cropped-mundo3-1.png">
+    <title>MUNDANOS - Admin Dashboard</title>
     <!-- This Page CSS -->
     <link href="Ample%20admin%20Template%20-%20The%20Ultimate%20Multipurpose%20admin%20template_archivos/chartist.css" rel="stylesheet">
     <link href="Ample%20admin%20Template%20-%20The%20Ultimate%20Multipurpose%20admin%20template_archivos/chartist-plugin-tooltip.css" rel="stylesheet">

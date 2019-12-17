@@ -1,3 +1,6 @@
+<?php
+    include("../seguridad.php");
+?>
 <!DOCTYPE html>
 <html dir="ltr" lang="en"><head>
 <meta http-equiv="content-type" content="text/html; charset=UTF-8">
@@ -8,9 +11,8 @@
     <meta name="description" content="">
     <meta name="author" content="">
     <!-- Favicon icon -->
-    <link rel="icon" type="image/png" sizes="16x16" href="../https://ampleadmin.wrappixel.com/assets/images/favicon.png">
-    <title>Ample admin Template - The Ultimate Multipurpose admin template</title>
-	<link rel="canonical" href="../https://www.wrappixel.com/templates/ampleadmin/">
+    <link rel="icon" type="image/png" sizes="16x16" href="../wp_template/cropped-mundo3-1.png">
+    <title>MUNDANOS - Admin Dashboard</title>
     <!-- This Page CSS -->
     <link href="../Ample%20admin%20Template%20-%20The%20Ultimate%20Multipurpose%20admin%20template_archivos/chartist.css" rel="stylesheet">
     <link href="../Ample%20admin%20Template%20-%20The%20Ultimate%20Multipurpose%20admin%20template_archivos/chartist-plugin-tooltip.css" rel="stylesheet">
@@ -206,8 +208,6 @@
                         <!-- Logo icon -->
                         <b class="logo-icon">
                             <!--You can put here icon as well // <i class="wi wi-sunset"></i> //-->
-                            <!-- Dark Logo icon -->
-                            <img src="../Ample%20admin%20Template%20-%20The%20Ultimate%20Multipurpose%20admin%20template_archivos/logo-icon.png" alt="homepage" class="dark-logo">
                             <!-- Light Logo icon -->
                             <img src="../Ample%20admin%20Template%20-%20The%20Ultimate%20Multipurpose%20admin%20template_archivos/logo-light-icon.png" alt="homepage" class="light-logo">
                         </b>
@@ -270,7 +270,7 @@
                             </a>
                             <ul aria-expanded="false" class="collapse first-level in">
                                 <li class="sidebar-item">
-                                    <a href="index.html" class="sidebar-link">
+                                    <a href="../paises.php" class="sidebar-link">
                                         <i class="fa fa-flag"></i>
                                         <span class="hide-menu"> Paises </span>
                                     </a>

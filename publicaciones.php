@@ -9,9 +9,8 @@
     <meta name="description" content="">
     <meta name="author" content="">
     <!-- Favicon icon -->
-    <link rel="icon" type="image/png" sizes="16x16" href="https://ampleadmin.wrappixel.com/assets/images/favicon.png">
-    <title>Ample admin Template - The Ultimate Multipurpose admin template</title>
-	<link rel="canonical" href="https://www.wrappixel.com/templates/ampleadmin/">
+    <link rel="icon" type="image/png" sizes="16x16" href="wp_template/cropped-mundo3-1.png">
+    <title>MUNDANOS - Admin Dashboard</title>
     <!-- This Page CSS -->
     <link href="Ample%20admin%20Template%20-%20The%20Ultimate%20Multipurpose%20admin%20template_archivos/chartist.css" rel="stylesheet">
     <link href="Ample%20admin%20Template%20-%20The%20Ultimate%20Multipurpose%20admin%20template_archivos/chartist-plugin-tooltip.css" rel="stylesheet">
@@ -149,9 +148,9 @@
                         <b class="logo-icon">
                             <!--You can put here icon as well // <i class="wi wi-sunset"></i> //-->
                             <!-- Dark Logo icon -->
-                            <img src="Ample%20admin%20Template%20-%20The%20Ultimate%20Multipurpose%20admin%20template_archivos/logo-icon.png" alt="homepage" class="dark-logo">
+                            <img src="wp_template/cropped-mundo3-1.png" alt="homepage" class="dark-logo">
                             <!-- Light Logo icon -->
-                            <img src="Ample%20admin%20Template%20-%20The%20Ultimate%20Multipurpose%20admin%20template_archivos/logo-light-icon.png" alt="homepage" class="light-logo">
+                            <img src="wp_template/cropped-mundo3-1.png" alt="homepage" class="light-logo">
                         </b>
                         <!--End Logo icon -->
                         <!-- Logo text -->
@@ -256,6 +255,7 @@
                                             <th scope="col" class="border-0 text-uppercase font-medium">Usuario</th>
                                             <th scope="col" class="border-0 text-uppercase font-medium">Pais</th>
                                             <th scope="col" class="border-0 text-uppercase font-medium">Fecha</th>
+                                            <th scope="col" class="border-0 text-uppercase font-medium">Portada</th>
                                             <th scope="col" class="border-0 text-uppercase font-medium">Activo</th>
                                             <th scope="col" class="border-0 text-uppercase font-medium">Opciones</th>
                                         </tr>
@@ -281,17 +281,22 @@
                                                 echo    '<tr>
                                                             <td class="pl-4">'.$A_row['id'].'</td>
                                                         <td>
-                                                            <h5 class="font-medium mb-0">'. utf8encode($A_row['title']).'</h5>
+                                                            <h5 class="font-medium mb-0">'. utf8_encode($A_row['title']).'</h5>
                                                         </td>
                                                         <td>
                                                             <span class="text-muted">'. $A_user[$user].'</span>
                                                         </td>
                                                         <td>
-                                                            <span class="text-muted">'.utf8encode($A_country[$country]).'</span>
+                                                            <span class="text-muted">'.utf8_encode($A_country[$country]).'</span>
                                                         </td>
                                                         <td>
                                                             <span class="text-muted">'.$A_row['updated_at'].'</span>
                                                         </td>
+                                                        <td>
+                                                        <form action="CRUDposts/update_post.php?id='.$A_row['id'].'" method="post" enctype="multipart/form-data">';
+                                                            echo '<input type="file" name="imgPost" id="fileToUpload">
+                                                        ';
+                                                        echo '</td>
                                                         <td>';
                                                             if ($A_row['tf_active']==1) {
                                                                 echo    '<label class="switch">
@@ -311,12 +316,9 @@
                                                                             <i class="fa fa-trash"></i>
                                                                         </button>
                                                                     </a>
-                                                                    <a href="CRUDposts/update_post.php?id='.$A_row['id'].'">
-                                                                        <button type="button" class="btn btn-outline-info btn-circle btn-lg btn-circle ml-2">
-                                                                            <i class="fa fa-pencil"></i>
-                                                                        </button>
-                                                                    </a>
+                                                                        <button type="submit" name="submit" class="btn btn-outline-info btn-circle btn-lg btn-circle ml-2"><i class="fa fa-pencil"></i> </button>
                                                                 </td>
+                                                            </form>
                                                         </tr>';
                                             } 
                                         ?>

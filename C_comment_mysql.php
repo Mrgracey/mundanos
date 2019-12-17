@@ -1,6 +1,4 @@
 <?php
-session_start();
-$id_user=1;//$_SESSION['user'];
 include('conexion.php');
 $id=$_POST['id'];
 $name=$_POST['name'];

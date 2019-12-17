@@ -11,7 +11,7 @@
 
 	<div class="entry-content">
 		
-<p style="text-align:center;" class="has-text-color has-background has-medium-font-size has-white-color has-red-background-color">¿Qué país quieres conocer?<br></p>
+<p style="text-align:center; margin: 0 0px 0px 2em;" class="has-text-color has-background has-medium-font-size has-white-color has-red-background-color">¿Qué país quieres conocer?<br></p>
 
 
 
@@ -33,7 +33,7 @@
 			for($i=0; $i<count($A_country); $i++){
             echo '<div class="item'.$A_numeros[$i].'"><h3 style="text-align:center;">'.utf8_encode($A_country[$i]).'</h3>';
 				echo '<figure class="">
-					<a href="#"  id="'.$A_iso[$i].'" id="'.$A_country_id[$i].'" onClick="cargarPais(this.id)">
+					<a href="#" id="'.$A_country_id[$i].'" onClick="cargarPais(this.id)">
 						<img class="upload" sizes="(max-width: 414px) 100vw, 414px" width="414" height="275" src="uploads/img_'.$A_country_id[$i].'.jpg" alt="">
 					</a>
 				</figure>

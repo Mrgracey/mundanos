@@ -8,9 +8,8 @@
     <meta name="description" content="">
     <meta name="author" content="">
     <!-- Favicon icon -->
-    <link rel="icon" type="image/png" sizes="16x16" href="https://ampleadmin.wrappixel.com/assets/images/favicon.png">
-    <title>Ample admin Template - The Ultimate Multipurpose admin template</title>
-	<link rel="canonical" href="https://www.wrappixel.com/templates/ampleadmin/">
+    <link rel="icon" type="image/png" sizes="16x16" href="wp_template/cropped-mundo3-1.png">
+    <title>MUNDANOS - Admin Dashboard</title>
     <!-- This Page CSS -->
     <link href="Ample%20admin%20Template%20-%20The%20Ultimate%20Multipurpose%20admin%20template_archivos/chartist.css" rel="stylesheet">
     <link href="Ample%20admin%20Template%20-%20The%20Ultimate%20Multipurpose%20admin%20template_archivos/chartist-plugin-tooltip.css" rel="stylesheet">
@@ -19,12 +18,6 @@
     <!-- needed css -->
     <link href="Ample%20admin%20Template%20-%20The%20Ultimate%20Multipurpose%20admin%20template_archivos/style.css" rel="stylesheet">
     <script src="js/sorttable.js"></script>
-    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-    <!--[if lt IE 9]>
-    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-<![endif]-->
 <style type="text/css">
     .jqstooltip { 
         position: absolute;
@@ -116,6 +109,7 @@
     <?php
         
         include("conexion.php");
+        include("seguridad.php");
         $comments=mysqli_query($con, "SELECT * FROM comments WHERE tf_moderate=0");
         $num_comments=mysqli_num_rows($comments);
     ?>
@@ -199,7 +193,7 @@
                     <ul id="sidebarnav" class="in">
                         <li class="sidebar-item selected">
                             <a class="sidebar-link has-arrow waves-effect waves-dark active" href="dashboard.php" aria-expanded="false">
-                                <i class="fa fa-chart-line"></i>
+                                <i style="font-size: 2vh; margin-left: .5vh;" class="fa fa-chart-line"></i>
                                 <span class="hide-menu">Dashboard</span> 
                                 <?php
                                     if ($num_comments>0) {
@@ -210,26 +204,26 @@
                             <ul aria-expanded="false" class="collapse first-level in">
                                 <li class="sidebar-item active">
                                     <a href="paises.php" class="sidebar-link  active">
-                                        <i class="fa fa-flag"></i>
-                                        <span class="hide-menu"> Paises </span>
+                                        <i style="font-size: 2vh; margin-left: .5vh;" class="fa fa-flag"></i>
+                                        <span class="hide-menu">&nbsp Paises </span>
                                     </a>
                                 </li>
                                 <li class="sidebar-item">
                                     <a href="dashboard.php" class="sidebar-link">
-                                        <i class="fa fa-users"></i>
-                                        <span class="hide-menu"> Users </span>
+                                        <i style="font-size: 2vh; margin-left: .5vh;" class="fa fa-users"></i>
+                                        <span class="hide-menu">&nbsp Users </span>
                                     </a>
                                 </li>
                                 <li class="sidebar-item">
                                     <a href="publicaciones.php" class="sidebar-link">
-                                        <i class="fa fa-file"></i>
-                                        <span class="hide-menu"> Publicaciones </span>
+                                        <i style="font-size: 2vh; margin-left: .5vh;" class="fa fa-file"></i>
+                                        <span class="hide-menu">&nbsp Publicaciones </span>
                                     </a>
                                 </li>
                                 <li class="sidebar-item">
                                     <a href="comentarios.php" class="sidebar-link">
-                                        <i class="fa fa-comment-dots"></i>
-                                        <span class="hide-menu"> Comentarios </span>
+                                        <i style="font-size: 2vh; margin-left: .5vh;" class="fa fa-comment-dots"></i>
+                                        <span class="hide-menu">&nbsp Comentarios </span>
                                         <?php
                                             if ($num_comments>0) {
                                                 echo '<span class="badge badge-inverse badge-pill ml-auto mr-3 font-medium px-2 py-1">'.$num_comments.'</span>';
@@ -241,7 +235,7 @@
                         </li>
                         
                     </ul>  
-                  
+                  <!--  -->
                 </nav>  
                 <!-- End Sidebar navigation -->
             <div class="ps-scrollbar-x-rail" style="left: 0px; bottom: 0px;"><div class="ps-scrollbar-x" tabindex="0" style="left: 0px; width: 0px;"></div></div><div class="ps-scrollbar-y-rail" style="top: 0px; height: 0px; right: 3px;"><div class="ps-scrollbar-y" tabindex="0" style="top: 0px; height: 0px;"></div></div></div>
@@ -279,14 +273,14 @@
                                 <h5 class="card-title text-uppercase mb-0">Manage Users</h5>
                             </div>
                             <div class="table-responsive">
-                                    <table id="table" class="table no-wrap user-table mb-0">
+                                    <table id="table" class="table no-wrap user-table mb-0 sortable">
                                     <thead>
                                         <tr>
                                         <th scope="col" class="border-0 text-uppercase font-medium pl-4">#</th>
                                         <th scope="col" class="border-0 text-uppercase font-medium">Codigo</th>
                                         <th scope="col" class="border-0 text-uppercase font-medium">Nombre</th>
                                         <th scope="col" class="border-0 text-uppercase font-medium">Portada</th>
-                                        <th scope="col" class="border-0 text-uppercase font-medium">Activo</th>
+                                        <th scope="col" class="border-0 text-uppercase font-medium"><a href="paises.php" style="color: #525f7f;">Activo</a></th>
                                         <th scope="col" class="border-0 text-uppercase font-medium">Opciones</th>
                                         </tr>
                                     </thead>
@@ -339,7 +333,7 @@
                                                 </label>
                                             </td>
                                             <td>
-                                                <button type="submit" name="submit" class="btn btn-outline-info btn-circle btn-lg btn-circle ml-2"><i class="fa fa-check"></i> </button>
+                                                <button type="submit" name="submit" class="btn btn-outline-info btn-circle btn-lg btn-circle ml-2"><i class="fa fa-check"></i></button>
                                             </td>
                                             </form>
                                         </tr>';
@@ -417,37 +411,6 @@
     <script src="Ample%20admin%20Template%20-%20The%20Ultimate%20Multipurpose%20admin%20template_archivos/chartist-plugin-tooltip.js"></script>
     <script src="Ample%20admin%20Template%20-%20The%20Ultimate%20Multipurpose%20admin%20template_archivos/dashboard3.js"></script>
 
-    <script src="https://kit.fontawesome.com/614bbff60b.js" crossorigin="anonymous"></script>
-    <script>
-        var $buttons = $('.sort'), $tab = $("#table");
-        $buttons.click(function(e) {
-            var self = this,
-                $rows = $tab.find("tbody > tr"),
-                idx = $buttons.index(this);
-            $rows.sort(function(a, b) {
-                var $obj1 = $(a).find('td').eq(idx),
-                    $obj2 = $(b).find('td').eq(idx),
-                    value1, value2;
-                
-                if ($obj1.text().length > 0) {
-                    value1 = $obj1.text().toUpperCase(); 
-                    value2 = $obj2.text().toUpperCase();
-                } else {
-                    value1 = $obj1.find("input")[0].checked;
-                    value2 = $obj2.find("input")[0].checked
-                }
-                    
-                if ($(self).hasClass('asc')) return (value1 > value2); 
-                else return (value1 < value2); 
-                
-            });
-            
-            $(this).toggleClass('asc');
-            $.each($rows, function(index, row){
-                $tab.append(row);
-            });
-            
-        });
-    </script>
+    <script src="fa/js/all.js" crossorigin="anonymous"></script>
 
 <div class="jvectormap-tip" style="display: none; left: 624px; top: 709.5px;">Georgia</div></body></html>

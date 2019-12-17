@@ -7,7 +7,7 @@
     <title>Document</title>
 </head>
 <body>
-    <div class="fr-view">
+<div class="fr-view">
     <?php
 // session_start();
 
@@ -18,10 +18,8 @@
 
 
 
-$con = mysqli_connect('localhost','root','','mundanos');
 
-
-$parrafo1=$_POST['editor'];
+$parrafo1=$_POST['content'];
 
 
 echo $parrafo1; 

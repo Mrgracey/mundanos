@@ -1,3 +1,6 @@
+<?php
+    include("../seguridad.php");
+?>
 <!DOCTYPE html>
 <html dir="ltr" lang="en"><head>
 <meta http-equiv="content-type" content="text/html; charset=UTF-8">
@@ -8,9 +11,8 @@
     <meta name="description" content="">
     <meta name="author" content="">
     <!-- Favicon icon -->
-    <link rel="icon" type="image/png" sizes="16x16" href="https://ampleadmin.wrappixel.com/assets/images/favicon.png">
-    <title>Ample admin Template - The Ultimate Multipurpose admin template</title>
-	<link rel="canonical" href="https://www.wrappixel.com/templates/ampleadmin/">
+    <link rel="icon" type="image/png" sizes="16x16" href="../wp_template/cropped-mundo3-1.png">
+    <title>MUNDANOS - Admin Dashboard</title>
     <!-- This Page CSS -->
     <link href="../Ample%20admin%20Template%20-%20The%20Ultimate%20Multipurpose%20admin%20template_archivos/chartist.css" rel="stylesheet">
     <link href="../Ample%20admin%20Template%20-%20The%20Ultimate%20Multipurpose%20admin%20template_archivos/chartist-plugin-tooltip.css" rel="stylesheet">
@@ -203,7 +205,6 @@
 <body data-theme="dark">
     <?php
         include("../conexion.php");
-        // include("seguridad.php");
         $id=$_GET['id'];
         $query = mysqli_query($con, "SELECT * FROM country WHERE id='$id' ");
         $comments=mysqli_query($con, "SELECT * FROM comments WHERE tf_moderate=0");
@@ -283,8 +284,8 @@
                                         ?>
                             </a>
                             <ul aria-expanded="false" class="collapse first-level in">
-                                <li class="sidebar-item">
-                                    <a href="../paises.php" class="sidebar-link">
+                                <li class="sidebar-item active">
+                                    <a href="../paises.php" class="sidebar-link active">
                                         <i class="fa fa-flag"></i>
                                         <span class="hide-menu"> Paises </span>
                                     </a>
@@ -295,8 +296,8 @@
                                         <span class="hide-menu"> Users </span>
                                     </a>
                                 </li>
-                                <li class="sidebar-item active">
-                                    <a href="publicaciones.php" class="sidebar-link active">
+                                <li class="sidebar-item">
+                                    <a href="../publicaciones.php" class="sidebar-link">
                                         <i class="fa fa-file"></i>
                                         <span class="hide-menu"> Publicaciones </span>
                                     </a>
@@ -355,7 +356,7 @@
                                                                     echo    '<form action="U_country_mysql.php" method="post">
                                                                                 <input type="hidden" name="id" value="'.$id.'">
                                                                                 <label style="float: left; display: inline;" for="inp" class="inp">
-                                                                                    <input type="text" value="'. utf8_encode($A_row['title']).'" name="title" id="inp" placeholder="Titulo">
+                                                                                    <input type="text" value="'. $A_row['title'].'" name="title" id="inp" placeholder="Titulo">
                                                                                     <span class="label"></span>
                                                                                     <span class="border"></span>
                                                                                 </label>

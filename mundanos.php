@@ -169,7 +169,7 @@ body.custom-background { background-color: #c69885; }
         $A_country[]=$row['name'];
         $A_country_id[]=$row['id'];
 		$A_is[]=$row['iso'];
-        echo '<li id="menu-item-556" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-556"><a class="pais deactive" id="'.$row['iso'].'" id="'.$row['id'].'" href="#" onClick="cargarPais(this.id)">'.utf8_encode($row['name']).'</a></li>';
+        echo '<li id="menu-item-556" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-556"><a class="pais deactive" id="'.$row['id'].'" href="#" onClick="cargarPais(this.id)">'.utf8_encode($row['name']).'</a></li>';
     }
 	
 		

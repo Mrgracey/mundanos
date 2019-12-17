@@ -1,6 +1,6 @@
 <?php
 session_start();
-$id_user=1;//$_SESSION['user'];
+$id_user=$_SESSION['user'];
 include('../conexion.php');
 $id=$_POST['id'];
 $title=$_POST['title'];

@@ -1,3 +1,6 @@
+<?php
+    include("../seguridad.php");
+?>
 <!DOCTYPE html>
 <html dir="ltr" lang="en"><head>
 <meta http-equiv="content-type" content="text/html; charset=UTF-8">
@@ -8,9 +11,8 @@
     <meta name="description" content="">
     <meta name="author" content="">
     <!-- Favicon icon -->
-    <link rel="icon" type="image/png" sizes="16x16" href="https://ampleadmin.wrappixel.com/assets/images/favicon.png">
-    <title>Ample admin Template - The Ultimate Multipurpose admin template</title>
-	<link rel="canonical" href="https://www.wrappixel.com/templates/ampleadmin/">
+    <link rel="icon" type="image/png" sizes="16x16" href="../wp_template/cropped-mundo3-1.png">
+    <title>MUNDANOS - Admin Dashboard</title>
     <!-- This Page CSS -->
     <link href="../Ample%20admin%20Template%20-%20The%20Ultimate%20Multipurpose%20admin%20template_archivos/chartist.css" rel="stylesheet">
     <link href="../Ample%20admin%20Template%20-%20The%20Ultimate%20Multipurpose%20admin%20template_archivos/chartist-plugin-tooltip.css" rel="stylesheet">
@@ -189,7 +191,6 @@
 <body data-theme="dark">
     <?php
         include("../conexion.php");
-        // include("seguridad.php");
         $comments=mysqli_query($con, "SELECT * FROM comments WHERE tf_moderate=0");
         $num_comments=mysqli_num_rows($comments);
     ?>
@@ -260,7 +261,11 @@
                             <a class="sidebar-link has-arrow waves-effect waves-dark active" href="../dashboard.php" aria-expanded="false">
                                 <i class="fa fa-chart-line"></i>
                                 <span class="hide-menu">Dashboard</span> 
-                                
+                                <?php
+                                    if ($num_comments>0) {
+                                        echo '<span class="badge badge-inverse badge-pill ml-auto mr-3 font-medium px-2 py-1">'.$num_comments.'</span>';
+                                    }
+                                ?>
                             </a>
                             <ul aria-expanded="false" class="collapse first-level in">
                                 <li class="sidebar-item">
@@ -328,12 +333,13 @@
                                                                 $A_country_id[]=$row['id'];
                                                             }
                                                             ?>
-                                                            <form action="C_post_mysql.php" method="post">
+                                                            <form action="C_post_mysql.php" method="post" enctype="multipart/form-data">
                                                                             <label style="float: left; display: inline;" for="inp" class="inp">
                                                                                 <input type="text" value="" name="title" id="inp" placeholder="Titulo">
                                                                                 <span class="label"></span>
                                                                                 <span class="border"></span>
                                                                             </label>
+                                                                                <input style="text-align: right; border: none; float: right; display: inline;" type="file" name="inp" id="fileToUpload">
                                                                             </br>
                                                                             </br>
                                                                             </br>
@@ -349,11 +355,11 @@
                                                                                         echo    '<option value="'.$A_country_id[$i].'">'.$A_country[$i].'</option>';
                                                                                        
                                                                                     }    
-                                                                                ?> </select>
+                                                                                ?> 
+                                                                            </select>
                                                                             <button type="submit" class="inline btn btn-danger text-white float-right ml-3 d-none d-md-block">Crear Publicacion  </button>
                                                                             
                                                                         </form>
-                                                            
                                                     </div>
                                                 </div>
                                             </div>
@@ -416,14 +422,18 @@
     <script src="https://kit.fontawesome.com/614bbff60b.js" crossorigin="anonymous"></script>
 
     <script type="text/javascript" src="../js/jquery-3.4.1.min.js"></script>
-    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/froala-editor@latest/js/froala_editor.pkgd.min.js"></script>
-    <script type="text/javascript" src="https://raw.githack.com/eKoopmans/html2pdf/master/dist/html2pdf.bundle.js"></script>
+    <script type="text/javascript" src="../froala/froala_editor.pkgd.min.js"></script>
+    <script type="text/javascript" src="../js/html2pdf.bundle.js"></script>
 
     <script>
         new FroalaEditor('textarea#body', {
             theme: 'dark',
             zIndex: 2003,
-            toolbarSticky: false
+            toolbarSticky: false,
+            imageUploadURL: '../uploads/upload_image.php',
+            imageUploadParams: {
+                id: 'body'
+            }
         })
         
         new FroalaEditor('textarea#description', {
