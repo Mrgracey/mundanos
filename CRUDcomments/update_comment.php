@@ -235,19 +235,10 @@
                     <a class="navbar-brand" href="../mundanos.html">
                         <!-- Logo icon -->
                         <b class="logo-icon">
-                            <!--You can put here icon as well // <i class="wi wi-sunset"></i> //-->
-                            <!-- Dark Logo icon -->
-                            <img src="../Ample%20admin%20Template%20-%20The%20Ultimate%20Multipurpose%20admin%20template_archivos/logo-icon.png" alt="homepage" class="dark-logo">
-                            <!-- Light Logo icon -->
-                            <img src="../Ample%20admin%20Template%20-%20The%20Ultimate%20Multipurpose%20admin%20template_archivos/logo-light-icon.png" alt="homepage" class="light-logo">
+                            <img src="../wp_template/mundanos-blanco.png" alt="homepage" class="light-logo">
                         </b>
-                        <!--End Logo icon -->
-                        <!-- Logo text -->
                         <span class="logo-text">
-                             <!-- dark Logo text -->
-                             <img src="../Ample%20admin%20Template%20-%20The%20Ultimate%20Multipurpose%20admin%20template_archivos/logo-text.png" alt="homepage" class="dark-logo">
-                             <!-- Light Logo text -->    
-                             <img src="../Ample%20admin%20Template%20-%20The%20Ultimate%20Multipurpose%20admin%20template_archivos/logo-light-text.png" class="light-logo" alt="homepage">
+                             <img src="../wp_template/mundanos-blanco-text.png" class="light-logo" alt="homepage">
                         </span>
                     </a>
                     <!-- ============================================================== -->
@@ -368,12 +359,6 @@
                                                                                 <br>
                                                                                 <br>
                                                                                 <br>
-                                                                                <label style="float: left; display: inline;" for="inp" class="inp">
-                                                                                    <input style="border: none;" class="text-muted" type="text" disabled value="'. ucfirst(utf8_encode($A_row['email'])).'" name="title" id="inp" placeholder="Titulo">
-                                                                                </label>
-                                                                                </br>
-                                                                                </br>
-                                                                                </br>
                                                                                 <label style="float: left; display: inline; max-width:110vh;" >
                                                                                     <div style="border: none;" class="text-muted">'. ucfirst(utf8_encode($A_row['comment'])).'</div>
                                                                                 </label>

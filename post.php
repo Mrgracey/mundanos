@@ -52,9 +52,6 @@
 					<input type="text" placeholder="Nombre?" name="name" style="padding: 10px;width: 40%;background: #f1f2f3;border: 1px solid #f1f2f3;">
 					<br>
 					<br>
-					<input type="text" placeholder="E-mail" name="email" style="padding: 10px;width: 60%;background: #f1f2f3;border: 1px solid #f1f2f3;">
-					<br>
-					<br>
 					<textarea aria-hidden="true" tabindex="-1" style="position: absolute; inset: -999px auto auto 0px; border: 0px none; padding: 0px; box-sizing: content-box; overflow-wrap: break-word; height: 0px !important; min-height: 0px !important; overflow: hidden; transition: none 0s ease 0s; font-family: &quot;Source Sans Pro&quot;, sans-serif; font-size: 14px; font-weight: 400; font-style: normal; letter-spacing: 0px; text-transform: none; text-decoration: rgba(0, 0, 0, 0.7); word-spacing: 0px; text-indent: 0px; line-height: 21px; width: 818px;" class="autosizejs "></textarea>
 					<textarea id="comment" name="comment" title="Introduce aquí tu comentario..." placeholder="Introduce aquí tu comentario..." style="height: 70px; overflow: hidden; overflow-wrap: break-word; resize: none; display: inline-block;"></textarea>
 					<br>

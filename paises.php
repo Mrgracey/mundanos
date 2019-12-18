@@ -138,19 +138,10 @@
                     <a class="navbar-brand" href="mundanos.php">
                         <!-- Logo icon -->
                         <b class="logo-icon">
-                            <!--You can put here icon as well // <i class="wi wi-sunset"></i> //-->
-                            <!-- Dark Logo icon -->
-                            <img src="Ample%20admin%20Template%20-%20The%20Ultimate%20Multipurpose%20admin%20template_archivos/logo-icon.png" alt="homepage" class="dark-logo">
-                            <!-- Light Logo icon -->
-                            <img src="Ample%20admin%20Template%20-%20The%20Ultimate%20Multipurpose%20admin%20template_archivos/logo-light-icon.png" alt="homepage" class="light-logo">
+                            <img src="wp_template/mundanos-blanco.png" alt="homepage" class="light-logo">
                         </b>
-                        <!--End Logo icon -->
-                        <!-- Logo text -->
                         <span class="logo-text">
-                             <!-- dark Logo text -->
-                             <img src="Ample%20admin%20Template%20-%20The%20Ultimate%20Multipurpose%20admin%20template_archivos/logo-text.png" alt="homepage" class="dark-logo">
-                             <!-- Light Logo text -->    
-                             <img src="Ample%20admin%20Template%20-%20The%20Ultimate%20Multipurpose%20admin%20template_archivos/logo-light-text.png" class="light-logo" alt="homepage">
+                             <img src="wp_template/mundanos-blanco-text.png" class="light-logo" alt="homepage">
                         </span>
                     </a>
                     <!-- ============================================================== -->
@@ -193,7 +184,7 @@
                     <ul id="sidebarnav" class="in">
                         <li class="sidebar-item selected">
                             <a class="sidebar-link has-arrow waves-effect waves-dark active" href="dashboard.php" aria-expanded="false">
-                                <i style="font-size: 2vh; margin-left: .5vh;" class="fa fa-chart-line"></i>
+                                <i  class="fa fa-chart-line"></i>
                                 <span class="hide-menu">Dashboard</span> 
                                 <?php
                                     if ($num_comments>0) {
@@ -204,25 +195,25 @@
                             <ul aria-expanded="false" class="collapse first-level in">
                                 <li class="sidebar-item active">
                                     <a href="paises.php" class="sidebar-link  active">
-                                        <i style="font-size: 2vh; margin-left: .5vh;" class="fa fa-flag"></i>
+                                        <i  class="fa fa-flag"></i>
                                         <span class="hide-menu">&nbsp Paises </span>
                                     </a>
                                 </li>
                                 <li class="sidebar-item">
                                     <a href="dashboard.php" class="sidebar-link">
-                                        <i style="font-size: 2vh; margin-left: .5vh;" class="fa fa-users"></i>
+                                        <i  class="fa fa-users"></i>
                                         <span class="hide-menu">&nbsp Users </span>
                                     </a>
                                 </li>
                                 <li class="sidebar-item">
                                     <a href="publicaciones.php" class="sidebar-link">
-                                        <i style="font-size: 2vh; margin-left: .5vh;" class="fa fa-file"></i>
+                                        <i  class="fa fa-file"></i>
                                         <span class="hide-menu">&nbsp Publicaciones </span>
                                     </a>
                                 </li>
                                 <li class="sidebar-item">
                                     <a href="comentarios.php" class="sidebar-link">
-                                        <i style="font-size: 2vh; margin-left: .5vh;" class="fa fa-comment-dots"></i>
+                                        <i  class="fa fa-comment-dots"></i>
                                         <span class="hide-menu">&nbsp Comentarios </span>
                                         <?php
                                             if ($num_comments>0) {
@@ -411,6 +402,6 @@
     <script src="Ample%20admin%20Template%20-%20The%20Ultimate%20Multipurpose%20admin%20template_archivos/chartist-plugin-tooltip.js"></script>
     <script src="Ample%20admin%20Template%20-%20The%20Ultimate%20Multipurpose%20admin%20template_archivos/dashboard3.js"></script>
 
-    <script src="fa/js/all.js" crossorigin="anonymous"></script>
+    <script src="https://kit.fontawesome.com/614bbff60b.js" crossorigin="anonymous"></script>
 
 <div class="jvectormap-tip" style="display: none; left: 624px; top: 709.5px;">Georgia</div></body></html>

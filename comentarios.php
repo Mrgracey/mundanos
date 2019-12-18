@@ -144,44 +144,24 @@
                     <a class="navbar-brand" href="mundanos.php">
                         <!-- Logo icon -->
                         <b class="logo-icon">
-                            <!--You can put here icon as well // <i class="wi wi-sunset"></i> //-->
-                            <!-- Dark Logo icon -->
-                            <img src="Ample%20admin%20Template%20-%20The%20Ultimate%20Multipurpose%20admin%20template_archivos/logo-icon.png" alt="homepage" class="dark-logo">
-                            <!-- Light Logo icon -->
-                            <img src="Ample%20admin%20Template%20-%20The%20Ultimate%20Multipurpose%20admin%20template_archivos/logo-light-icon.png" alt="homepage" class="light-logo">
+                            <img src="wp_template/mundanos-blanco.png" alt="homepage" class="light-logo">
                         </b>
-                        <!--End Logo icon -->
-                        <!-- Logo text -->
                         <span class="logo-text">
-                             <!-- dark Logo text -->
-                             <img src="Ample%20admin%20Template%20-%20The%20Ultimate%20Multipurpose%20admin%20template_archivos/logo-text.png" alt="homepage" class="dark-logo">
-                             <!-- Light Logo text -->    
-                             <img src="Ample%20admin%20Template%20-%20The%20Ultimate%20Multipurpose%20admin%20template_archivos/logo-light-text.png" class="light-logo" alt="homepage">
+                             <img src="wp_template/mundanos-blanco-text.png" class="light-logo" alt="homepage">
                         </span>
                     </a>
-                    <!-- ============================================================== -->
-                    <!-- End Logo -->
-                    <!-- ============================================================== -->
-                    <!-- ============================================================== -->
-                    <!-- Toggle which is visible on mobile only -->
-                    <!-- ============================================================== -->
-                    <a class="topbartoggler d-block d-md-none waves-effect waves-light" href="javascript:void(0)" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><i class="ti-more"></i></a>
+                    <a class="topbartoggler d-block d-md-none waves-effect waves-light" href="javascript:void(0)" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                        <i class="ti-more"></i>
+                    </a>
                 </div>
-                <!-- ============================================================== -->
-                <!-- End Logo -->
-                <!-- ============================================================== -->
                 <div class="navbar-collapse collapse" id="navbarSupportedContent" data-navbarbg="skin6">
-                    <!-- ============================================================== -->
-                    <!-- toggle and nav items -->
-                    <!-- ============================================================== -->
                     <ul class="navbar-nav float-left mr-auto">
-                        <li class="nav-item d-none d-md-block"><a class="nav-link sidebartoggler waves-effect waves-light" href="javascript:void(0)" data-sidebartype="mini-sidebar"><i class="fa fa-bars"></i></a></li>
-                       
-                        
+                        <li class="nav-item d-none d-md-block">
+                            <a class="nav-link sidebartoggler waves-effect waves-light" href="javascript:void(0)" data-sidebartype="mini-sidebar">
+                                <i class="fa fa-bars"></i>
+                            </a>
+                        </li>
                     </ul>
-                    <!-- ============================================================== -->
-                    <!-- Right side toggle and nav items -->
-                    <!-- ============================================================== -->
                 </div>
             </nav>
         </header>
@@ -284,7 +264,7 @@
                                     <tr>
                                       <th scope="col" class="border-0 text-uppercase font-medium pl-4">#</th>
                                       <th scope="col" class="border-0 text-uppercase font-medium">Nombre</th>
-                                      <th scope="col" class="border-0 text-uppercase font-medium">E-mail</th>
+                                      <!-- <th scope="col" class="border-0 text-uppercase font-medium">E-mail</th> -->
                                       <th scope="col" class="border-0 text-uppercase font-medium">Articulo</th>
                                       <!-- <th scope="col" class="border-0 text-uppercase font-medium">Moderado</th> -->
                                       <th scope="col" class="border-0 text-uppercase font-medium">Opciones</th>
@@ -316,9 +296,6 @@
                                             <td class="pl-4">'.utf8_encode($A_row['id']).'</td>
                                         <td>
                                             <span class="text-muted">'.utf8_encode($A_row['name']).'</span>
-                                        </td>
-                                        <td>
-                                            <span class="text-muted">'.utf8_encode($A_row['email']).'</span>
                                         </td>
                                         <td>
                                             <span class="text-muted">'.utf8_encode($A_title[$id]).'</span>

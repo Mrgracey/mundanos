@@ -18,7 +18,7 @@
           fill: #966791;
         }
         .LA.active:hover{
-          fill: green;
+          fill: #c69885;
         }
         .LA.deactive{
           fill: #6c526a;
@@ -31,7 +31,7 @@
           fill: #317280;
         }
         .EU.active:hover{
-          fill: grey;
+          fill: #c69885;
         }
         <!-- AFRICA -->
         .AF.active{
@@ -41,7 +41,7 @@
           fill: #b34c34;
         }
         .AF.active:hover{
-          fill: grey;
+          fill: #c69885;
         }
         <!-- ASIA -->
         .AS.active{
@@ -51,7 +51,7 @@
           fill: #ce9428;
         }
         .AS.active:hover{
-          fill: grey;
+          fill: #c69885;
         }
         <!-- OCEANIA -->
         .OC.active{
@@ -61,7 +61,7 @@
           fill: #64a486;
         }
         .OC.active:hover{
-          fill: green;
+          fill: #c69885;
         }    
       </style>
     </defs>
@@ -251,6 +251,35 @@
       <!-- <a xlink:href="pais/pais.php?iso=ZW "> --> <path d="M589.430936,519.364702L590.894558,515.218787L590.448821,514.346901L591.108540,510.129432L591.102378,506.451806L586.457972,503.988662L584.144584,504.046028L583.965143,502.971305L581.864447,503.365445L578.955262,505.742790L576.543267,508.126508L573.169857,509.741724L570.069908,509.422767L571.137526,511.756071L572.567611,513.975632L575.706400,517.214468L577.716802,520.464611L579.861498,520.922314L581.629683,522.272685L582.758070,522.305324L584.100010,522.812707L585.034624,522.453080L586.508852,522.752464L589.430936,519.364702Z "  class="AF" data-id="ZW" data-name="Zimbabwe" id="ZW"/>
       <!-- <a xlink:href="pais/pais.php?iso=FR "> --> <path d="M526.514546,330.272084L526.043011,327.042094L523.697231,329.882600L524.339321,332.390830L525.598564,333.144597L526.514546,330.272084Z M504.545742,294.693876L503.713031,298.269753L497.255724,301.616249L494.637487,299.782003L495.516634,304.587806L490.859115,303.505116L487.263194,304.420930L487.542747,307.462380L491.781403,309.049348L493.826991,311.119300L496.689022,315.350948L496.160874,323.169113L494.726634,325.471030L495.832090,326.950935L500.937567,328.669016L501.945850,327.853307L505.066581,329.556861L508.281618,329.069932L508.598937,326.794608L512.638659,325.559419L518.108753,326.590655L520.621361,324.433687L520.938679,322.762639L519.435357,322.271911L518.720888,319.255765L519.682447,318.057316L518.866218,316.570988L518.980591,315.445861L518.027918,313.688299L516.703607,314.317879L516.744597,312.493530L519.947453,309.544379L520.708932,308.842660L521.060935,305.890936L522.463214,303.014738L518.466489,302.234417L517.157656,301.120001L516.357337,301.210175L515.736888,300.839529L513.310561,298.882307L511.887213,299.217952L508.662286,295.424381L506.971353,293.803166L504.545742,294.693876Z "  class="EU" data-id="FR" data-name="France" id="FR"/>
     </g>
+    <g class="amcharts-zoom-control" transform="translate(20,786)">
+		<g class="amcharts-zoom-control-zoom">
+			<rect x="0.5" y="0.5" width="37" height="168" rx="4" ry="4" stroke-width="0" fill="#000000" stroke="#000000" fill-opacity="0" stroke-opacity="0" class="amcharts-zoom-bg" transform="translate(-3,-3)"></rect>
+			<g transform="translate(6.166666666666666,1)">
+				<path cs="100,100" d="M1.5,42.5 L19.5,42.5" fill="none" stroke-width="1" stroke-opacity="0.1" stroke="#FFFFFF" class="amcharts-zoom-grid"></path>
+				<path cs="100,100" d="M1.5,53.5 L19.5,53.5" fill="none" stroke-width="1" stroke-opacity="0.1" stroke="#FFFFFF" class="amcharts-zoom-grid"></path>
+				<path cs="100,100" d="M1.5,64.5 L19.5,64.5" fill="none" stroke-width="1" stroke-opacity="0.1" stroke="#FFFFFF" class="amcharts-zoom-grid"></path>
+				<path cs="100,100" d="M1.5,75.5 L19.5,75.5" fill="none" stroke-width="1" stroke-opacity="0.1" stroke="#FFFFFF" class="amcharts-zoom-grid"></path>
+				<path cs="100,100" d="M1.5,87.5 L19.5,87.5" fill="none" stroke-width="1" stroke-opacity="0.1" stroke="#FFFFFF" class="amcharts-zoom-grid"></path>
+				<path cs="100,100" d="M1.5,98.5 L19.5,98.5" fill="none" stroke-width="1" stroke-opacity="0.1" stroke="#FFFFFF" class="amcharts-zoom-grid"></path>
+				<path cs="100,100" d="M1.5,109.5 L19.5,109.5" fill="none" stroke-width="1" stroke-opacity="0.1" stroke="#FFFFFF" class="amcharts-zoom-grid"></path>
+				<path cs="100,100" d="M1.5,120.5 L19.5,120.5" fill="none" stroke-width="1" stroke-opacity="0.1" stroke="#FFFFFF" class="amcharts-zoom-grid"></path>
+			</g>
+			<g cursor="pointer" class="amcharts-zoom-dragger" opacity="1" transform="translate(5,91)">
+				<rect x="0.5" y="0.5" width="21" height="11" rx="2" ry="2" stroke-width="1" fill="#FFFFFF" stroke="#000000" fill-opacity="1" stroke-opacity="0.1"></rect>
+			</g>
+			<g cursor="pointer" class="amcharts-zoom-in">
+				<circle r="15.5" cx="0" cy="0" fill="#FFFFFF" stroke="#000000" fill-opacity="1" stroke-width="1" stroke-opacity="0.1" transform="translate(16,16)"></circle>
+				<g transform="translate(16,16)" opacity="1" style="pointer-events: none;">
+					<path cs="100,100" d="M-6.5,0.5 L7.5,0.5" fill="none" stroke-width="1" stroke-opacity="1" stroke="#000000"></path>
+					<path cs="100,100" d="M0.5,-6.5 L0.5,7.5" fill="none" stroke-width="1" stroke-opacity="1" stroke="#000000"></path>
+				</g>
+			</g>
+			<g cursor="pointer" transform="translate(0,131)" class="amcharts-zoom-out">
+				<circle r="15.5" cx="0" cy="0" fill="#FFFFFF" stroke="#000000" fill-opacity="1" stroke-width="1" stroke-opacity="0.1" transform="translate(16,16)"></circle>
+				<path cs="100,100" d="M-6.5,0.5 L7.5,0.5" fill="none" stroke-width="1" stroke-opacity="1" stroke="#000000" transform="translate(16,16)" opacity="1" style="pointer-events: none;"></path>
+			</g>
+		</g>
+	</g>
   </svg>
 </div>
 <div id="asd"></div>
