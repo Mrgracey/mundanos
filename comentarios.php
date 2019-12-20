@@ -286,12 +286,14 @@
                                     $query = mysqli_query($con, "SELECT * FROM comments WHERE tf_moderate=0 LIMIT $cuenta, $tam");
                                     $query_posts=mysqli_query($con,"SELECT * FROM posts");
                                     $tope=floor($num_rows/$tam)+1;
+                                    $A_title=array(0);
                                     while( $row=mysqli_fetch_array($query_posts)){
                                         $id1=$row['id'];
                                         $A_title[$id1]=$row['title'];
                                     }
+                                    
                                     while( $A_row=mysqli_fetch_array($query)){
-                                        $id=$A_row['id'];
+                                        $id=$A_row['id_post'];
                                     echo '<tr>
                                             <td class="pl-4">'.utf8_encode($A_row['id']).'</td>
                                         <td>
